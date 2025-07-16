@@ -1,57 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Cookie Validator</title>
+    <title>Advanced Cookie Validator</title>
     <style>
-        body { font-family: Arial, max-width: 600px; margin: 0 auto; padding: 20px; }
-        .security-alert {
-            background: #fff3cd; border-left: 4px solid #ffc107;
-            padding: 15px; margin-bottom: 20px;
-        }
-        textarea { width: 100%; height: 120px; padding: 10px; }
-        button { background: #28a745; color: white; border: none; padding: 10px 20px; }
-        #result { margin-top: 15px; padding: 15px; display: none; }
+        body { font-family: Arial, sans-serif; max-width: 650px; margin: 0 auto; padding: 20px; }
+        .validator-box { background: #f8f9fa; padding: 20px; border-radius: 8px; }
+        textarea { width: 100%; height: 150px; padding: 10px; font-family: monospace; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; margin-top: 10px; }
+        #result { margin-top: 15px; padding: 15px; border-radius: 5px; display: none; }
+        .valid { background: #d4edda; color: #155724; }
+        .invalid { background: #f8d7da; color: #721c24; }
+        .debug { font-family: monospace; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <div class="security-alert">
-        <strong>⚠️ Security Notice:</strong> This tool never stores or transmits full cookies.
-        All validations happen locally in your browser.
+    <div class="validator-box">
+        <h2>Roblox Cookie Validator</h2>
+        <textarea id="cookieInput" placeholder="Paste .ROBLOSECURITY cookie here..."></textarea>
+        <button onclick="validateCookie()">Validate</button>
+        <div id="result"></div>
+        <div id="debug" class="debug"></div>
     </div>
-    
-    <h2>Cookie Validator</h2>
-    <textarea id="cookieInput" placeholder="Paste cookie here..."></textarea>
-    <button onclick="validateLocally()">Validate</button>
-    <div id="result"></div>
 
     <script>
-        function validateLocally() {
+        function validateCookie() {
             const cookie = document.getElementById('cookieInput').value.trim();
             const resultDiv = document.getElementById('result');
+            const debugDiv = document.getElementById('debug');
+            
+            // Reset UI
             resultDiv.style.display = 'none';
-
+            debugDiv.textContent = '';
+            
             if (!cookie) {
-                showResult("Please enter a cookie", "error");
+                showResult("Please enter a cookie", "invalid");
                 return;
             }
 
-            // Client-side validation only
-            const isValid = /^_\|WARNING:-DO-NOT-SHARE-THIS/.test(cookie) && 
-                          cookie.length > 400 && 
-                          cookie.length < 800;
-
+            // Enhanced validation patterns
+            const validationPatterns = [
+                /^_\|WARNING:-DO-NOT-SHARE-THIS/,  // Standard cookie
+                /^::WARNING::/,                    // Alternate format
+                /^ROBLOSECURITY:/,                 // Another variant
+                /^_|WARNING:[A-Z0-9]{24}_/         // Some mobile cookies
+            ];
+            
+            let isValid = false;
+            let validationMsg = "";
+            
+            // Check all patterns
+            for (const pattern of validationPatterns) {
+                if (pattern.test(cookie)) {
+                    isValid = true;
+                    validationMsg = `Matched pattern: ${pattern.source}`;
+                    break;
+                }
+            }
+            
+            // Additional length checks
             if (isValid) {
-                showResult("✅ Valid cookie format", "success");
-                console.log("First 5 chars:", cookie.substring(0, 5));
+                if (cookie.length < 300 || cookie.length > 900) {
+                    isValid = false;
+                    validationMsg = "Invalid length (" + cookie.length + " chars)";
+                }
+            }
+            
+            // Show results
+            if (isValid) {
+                showResult("✅ Valid Roblox Cookie", "valid");
+                debugDiv.textContent = [
+                    `Length: ${cookie.length} chars`,
+                    `Start: ${cookie.substring(0, 15)}...`,
+                    `End: ...${cookie.substring(cookie.length - 15)}`,
+                    validationMsg
+                ].join('\n');
             } else {
-                showResult("❌ Invalid cookie format", "error");
+                showResult("❌ Invalid Cookie Format", "invalid");
+                debugDiv.textContent = [
+                    `First 20 chars: ${cookie.substring(0, 20)}`,
+                    `Last 20 chars: ${cookie.substring(Math.max(0, cookie.length - 20))}`,
+                    `Length: ${cookie.length} chars`,
+                    validationMsg || "No pattern matched"
+                ].join('\n');
             }
         }
-
+        
         function showResult(message, type) {
             const div = document.getElementById('result');
             div.textContent = message;
-            div.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            div.className = type;
             div.style.display = 'block';
         }
     </script>
