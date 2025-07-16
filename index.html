@@ -5,60 +5,103 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
+            max-width: 700px;
+            margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
         }
         textarea {
             width: 100%;
-            height: 120px;
-            padding: 10px;
-            margin: 10px 0;
-            font-family: monospace;
+            height: 150px;
+            padding: 12px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 14px;
         }
         button {
-            background: #4285f4;
+            background: #3498db;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 12px 20px;
             cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
         }
         #result {
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
             display: none;
+            font-weight: bold;
         }
         .valid {
-            background: #e6f4ea;
-            border-left: 4px solid #34a853;
+            background: #d5f5e3;
+            color: #27ae60;
+            border-left: 5px solid #2ecc71;
         }
         .invalid {
-            background: #fce8e6;
-            border-left: 4px solid #ea4335;
+            background: #fadbd8;
+            color: #e74c3c;
+            border-left: 5px solid #e74c3c;
         }
         .debug {
-            font-family: monospace;
-            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            margin-top: 20px;
             white-space: pre-wrap;
             background: #f8f9fa;
-            padding: 10px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ffc107;
         }
     </style>
 </head>
 <body>
-    <h2>Roblox Cookie Validator</h2>
-    <p>Paste your cookie below to check its validity:</p>
-    
-    <textarea id="cookieInput" placeholder="Paste .ROBLOSECURITY cookie here..."></textarea>
-    <button onclick="checkCookie()">Validate Cookie</button>
-    
-    <div id="result"></div>
-    <div id="debug" class="debug"></div>
+    <div class="container">
+        <h1>Roblox Cookie Validator</h1>
+        
+        <div class="warning">
+            <strong>⚠️ Important:</strong> This tool only validates cookie format locally in your browser. No data is sent to any server.
+        </div>
+        
+        <p>Paste your .ROBLOSECURITY cookie below:</p>
+        <textarea id="cookieInput" placeholder="Paste cookie starting with _|WARNING:-DO-NOT-SHARE-THIS..."></textarea>
+        <button onclick="validateCookie()">Validate Cookie</button>
+        
+        <div id="result"></div>
+        <div id="debug" class="debug"></div>
+    </div>
 
     <script>
-        function checkCookie() {
+        function validateCookie() {
+            // Get input
             const cookie = document.getElementById('cookieInput').value.trim();
             const resultDiv = document.getElementById('result');
             const debugDiv = document.getElementById('debug');
@@ -67,45 +110,97 @@
             resultDiv.style.display = 'none';
             debugDiv.textContent = '';
             
+            // Check if empty
             if (!cookie) {
-                showResult("❌ Please paste a cookie", "invalid");
+                showResult("Please paste a cookie first", "invalid");
                 return;
             }
 
-            // Enhanced validation
-            const isValid = validateRobloxCookie(cookie);
+            // Validate the cookie
+            const validation = checkRobloxCookie(cookie);
             
-            // Display results
-            if (isValid) {
+            // Show results
+            if (validation.isValid) {
                 showResult("✅ Valid Roblox Cookie", "valid");
             } else {
-                showResult("❌ Invalid Cookie Format", "invalid");
+                showResult("❌ Invalid Cookie", "invalid");
             }
             
             // Show debug info
-            debugDiv.textContent = getDebugInfo(cookie);
+            debugDiv.textContent = `COOKIE VALIDATION REPORT
+=================================
+Status: ${validation.isValid ? 'VALID' : 'INVALID'}
+Reason: ${validation.reason}
+
+BASIC INFO:
+Length: ${cookie.length} characters
+Starts with: ${cookie.substring(0, 15)}
+Ends with: ${cookie.substring(Math.max(0, cookie.length - 15))}
+
+PATTERN CHECK:
+${validation.details}`;
         }
 
-        function validateRobloxCookie(cookie) {
-            // Check for minimum requirements
-            if (cookie.length < 300 || cookie.length > 900) return false;
+        function checkRobloxCookie(cookie) {
+            // Check length first
+            if (cookie.length < 300) {
+                return {
+                    isValid: false,
+                    reason: "Too short (typical cookies are 500+ characters)",
+                    details: "Failed length check - minimum 300 chars required"
+                };
+            }
             
-            // Check for known patterns
+            if (cookie.length > 900) {
+                return {
+                    isValid: false,
+                    reason: "Too long (typical cookies are under 800 characters)",
+                    details: "Failed length check - maximum 900 chars allowed"
+                };
+            }
+
+            // Check for required patterns
             const patterns = [
-                /^_\|WARNING:-DO-NOT-SHARE-THIS/,  // Standard format
-                /^::WARNING::/,                    // Alternate format
-                /^ROBLOSECURITY:/,                 // Another variant
-                /^_|WARNING:[A-Z0-9]{24}_/         // Mobile format
+                {
+                    name: "Standard Cookie Pattern",
+                    regex: /^_\|WARNING:-DO-NOT-SHARE-THIS/,
+                    required: true
+                },
+                {
+                    name: "Alternate Cookie Pattern",
+                    regex: /^::WARNING::/,
+                    required: false
+                },
+                {
+                    name: "ROBLOSECURITY Prefix",
+                    regex: /^ROBLOSECURITY:/,
+                    required: false
+                }
             ];
-            
-            return patterns.some(pattern => pattern.test(cookie));
-        }
 
-        function getDebugInfo(cookie) {
-            return `Cookie Length: ${cookie.length} characters
-First 20 chars: ${cookie.substring(0, 20)}
-Last 20 chars: ${cookie.substring(Math.max(0, cookie.length - 20))}
-Pattern Check: ${validateRobloxCookie(cookie) ? 'PASSED' : 'FAILED'}`;
+            // Test all patterns
+            let passedPattern = null;
+            for (const pattern of patterns) {
+                if (pattern.regex.test(cookie)) {
+                    passedPattern = pattern.name;
+                    if (pattern.required) {
+                        return {
+                            isValid: true,
+                            reason: "Matches valid pattern",
+                            details: `Passed required pattern: ${pattern.name}`
+                        };
+                    }
+                }
+            }
+
+            // If we get here, no required pattern matched
+            return {
+                isValid: false,
+                reason: "Doesn't match known Roblox cookie patterns",
+                details: passedPattern 
+                    ? `Only matched non-required pattern: ${passedPattern}`
+                    : "No known patterns matched"
+            };
         }
 
         function showResult(message, type) {
