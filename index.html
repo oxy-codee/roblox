@@ -8,7 +8,6 @@
             max-width: 700px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.6;
             background-color: #f5f5f5;
         }
         .container {
@@ -16,10 +15,6 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
         }
         textarea {
             width: 100%;
@@ -29,7 +24,6 @@
             font-family: 'Courier New', monospace;
             border: 2px solid #ddd;
             border-radius: 4px;
-            resize: vertical;
             font-size: 14px;
         }
         button {
@@ -41,16 +35,11 @@
             font-size: 16px;
             border-radius: 4px;
             width: 100%;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #2980b9;
         }
         #result {
             margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
-            display: none;
             font-weight: bold;
         }
         .valid {
@@ -63,151 +52,42 @@
             color: #e74c3c;
             border-left: 5px solid #e74c3c;
         }
-        .debug {
-            font-family: 'Courier New', monospace;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #eee;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        .warning {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border-left: 5px solid #ffc107;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Roblox Cookie Validator</h1>
-        
-        <div class="warning">
-            <strong>⚠️ Important:</strong> This tool only validates cookie format locally in your browser. No data is sent to any server.
-        </div>
-        
-        <p>Paste your .ROBLOSECURITY cookie below:</p>
-        <textarea id="cookieInput" placeholder="Paste cookie starting with _|WARNING:-DO-NOT-SHARE-THIS..."></textarea>
+        <h2>Roblox Cookie Validator</h2>
+        <textarea id="cookieInput" placeholder="Paste your _|WARNING:-DO-NOT-SHARE-THIS cookie here"></textarea>
         <button onclick="validateCookie()">Validate Cookie</button>
-        
-        <div id="result"></div>
-        <div id="debug" class="debug"></div>
+        <div id="result">Paste a cookie and click validate</div>
     </div>
 
     <script>
         function validateCookie() {
-            // Get input
             const cookie = document.getElementById('cookieInput').value.trim();
             const resultDiv = document.getElementById('result');
-            const debugDiv = document.getElementById('debug');
             
-            // Reset display
-            resultDiv.style.display = 'none';
-            debugDiv.textContent = '';
-            
-            // Check if empty
             if (!cookie) {
-                showResult("Please paste a cookie first", "invalid");
+                resultDiv.textContent = "❌ Please paste a cookie";
+                resultDiv.className = "invalid";
                 return;
             }
 
-            // Validate the cookie
-            const validation = checkRobloxCookie(cookie);
-            
-            // Show results
-            if (validation.isValid) {
-                showResult("✅ Valid Roblox Cookie", "valid");
+            // SIMPLE BUT EFFECTIVE VALIDATION
+            const isValid = (
+                cookie.startsWith('_|WARNING:-DO-NOT-SHARE-THIS') && 
+                cookie.length > 500 && 
+                cookie.includes('|_') &&
+                cookie.includes('--')
+            );
+
+            if (isValid) {
+                resultDiv.textContent = `✅ VALID COOKIE (${cookie.length} chars)`;
+                resultDiv.className = "valid";
             } else {
-                showResult("❌ Invalid Cookie", "invalid");
+                resultDiv.textContent = "❌ INVALID COOKIE FORMAT";
+                resultDiv.className = "invalid";
             }
-            
-            // Show debug info
-            debugDiv.textContent = `COOKIE VALIDATION REPORT
-=================================
-Status: ${validation.isValid ? 'VALID' : 'INVALID'}
-Reason: ${validation.reason}
-
-BASIC INFO:
-Length: ${cookie.length} characters
-Starts with: ${cookie.substring(0, 15)}
-Ends with: ${cookie.substring(Math.max(0, cookie.length - 15))}
-
-PATTERN CHECK:
-${validation.details}`;
-        }
-
-        function checkRobloxCookie(cookie) {
-            // Check length first
-            if (cookie.length < 300) {
-                return {
-                    isValid: false,
-                    reason: "Too short (typical cookies are 500+ characters)",
-                    details: "Failed length check - minimum 300 chars required"
-                };
-            }
-            
-            if (cookie.length > 900) {
-                return {
-                    isValid: false,
-                    reason: "Too long (typical cookies are under 800 characters)",
-                    details: "Failed length check - maximum 900 chars allowed"
-                };
-            }
-
-            // Check for required patterns
-            const patterns = [
-                {
-                    name: "Standard Cookie Pattern",
-                    regex: /^_\|WARNING:-DO-NOT-SHARE-THIS/,
-                    required: true
-                },
-                {
-                    name: "Alternate Cookie Pattern",
-                    regex: /^::WARNING::/,
-                    required: false
-                },
-                {
-                    name: "ROBLOSECURITY Prefix",
-                    regex: /^ROBLOSECURITY:/,
-                    required: false
-                }
-            ];
-
-            // Test all patterns
-            let passedPattern = null;
-            for (const pattern of patterns) {
-                if (pattern.regex.test(cookie)) {
-                    passedPattern = pattern.name;
-                    if (pattern.required) {
-                        return {
-                            isValid: true,
-                            reason: "Matches valid pattern",
-                            details: `Passed required pattern: ${pattern.name}`
-                        };
-                    }
-                }
-            }
-
-            // If we get here, no required pattern matched
-            return {
-                isValid: false,
-                reason: "Doesn't match known Roblox cookie patterns",
-                details: passedPattern 
-                    ? `Only matched non-required pattern: ${passedPattern}`
-                    : "No known patterns matched"
-            };
-        }
-
-        function showResult(message, type) {
-            const div = document.getElementById('result');
-            div.textContent = message;
-            div.className = type;
-            div.style.display = 'block';
         }
     </script>
 </body>
