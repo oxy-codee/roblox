@@ -1,69 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Grow a Garden Legendary Scanner</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #121212; color: #f0f0f0; padding: 20px; }
-    h1 { color: #76c043; }
-    .item { background: #222; padding: 10px; margin: 5px 0; border-left: 5px solid #76c043; }
-  </style>
-</head>
+<html><head><title>GAG Stock Scanner</title></head>
 <body>
-  <h1>Legendary Scanner: Eggs & Gear</h1>
-  <p>Looking for Legendary+ items in stock...</p>
+  <h1>Grow A Garden Scanner</h1>
   <div id="results">Loading…</div>
-
   <script>
-    const API = 'https://gag-tracker-v2.onrender.com/api/gag-tracker';
-    const targetRarities = ['Legendary', 'Mythical', 'Divine'];
+    const API = '/stock.json'; // Hosted JSON file
+    const rareRarities = ['Legendary', 'Mythical', 'Divine'];
+    const targetSeeds = ['Bamboo'];
+    const targetGear = ['Master Sprinkler'];
 
-    async function scanStock() {
-      const resp = await fetch(API);
-      const json = await resp.json();
-      const results = document.getElementById('results');
-      results.innerHTML = '';
+    async function scan() {
+      const res = await fetch(API);
+      const data = await res.json();
+      const results = [];
 
-      const matches = [];
-
-      const gs = json.general_stock || {};
-      // Gear items
-      (gs.gear || []).forEach(g => {
-        if (g.name && g.stock > 0 && targetRarities.includes(g.rarity)) {
-          matches.push({ ...g, type: 'Gear' });
+      data.seeds.forEach(s => {
+        if (s.stock > 0 && (targetSeeds.includes(s.name) || rareRarities.includes(s.rarity))) {
+          results.push({ ...s, type: 'Seed' });
         }
       });
-      // Seed items
-      (gs.seeds || []).forEach(s => {
-        if (s.name && s.stock > 0 && targetRarities.includes(s.rarity)) {
-          matches.push({ ...s, type: 'Seed' });
+      data.gear.forEach(g => {
+        if (g.stock > 0 && (targetGear.includes(g.name) || rareRarities.includes(g.rarity))) {
+          results.push({ ...g, type: 'Gear' });
         }
       });
-      // Egg stock
-      (json.egg_stock?.egg || []).forEach(e => {
-        if (e.name && e.stock > 0 && targetRarities.includes(e.rarity)) {
-          matches.push({ ...e, type: 'Egg' });
+      data.egg.forEach(e => {
+        if (e.stock > 0 && rareRarities.includes(e.rarity)) {
+          results.push({ ...e, type: 'Egg' });
         }
       });
 
-      if (matches.length > 0) {
-        matches.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'item';
-          div.innerHTML = `
-            <strong>${item.name}</strong> (${item.type})<br>
-            Rarity: <span style="color: gold;">${item.rarity}</span><br>
-            Stock: ${item.stock}
-          `;
-          results.appendChild(div);
-        });
-      } else {
-        results.innerHTML = '<p>No Legendary+ items in stock right now.</p>';
-      }
+      const el = document.getElementById('results');
+      el.innerHTML = results.length
+        ? results.map(i => `<div><b>${i.name}</b> (${i.type}) x${i.stock}</div>`).join('')
+        : '<p>No target items in stock.</p>';
     }
 
-    scanStock();
-    setInterval(scanStock, 30000);
+    scan();
+    setInterval(scan, 30000);
   </script>
-</body>
-</html>
+</body></html>
