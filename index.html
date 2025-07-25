@@ -4,73 +4,66 @@
   <meta charset="UTF-8">
   <title>Grow a Garden Legendary Scanner</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1e1e1e;
-      color: #e0e0e0;
-      padding: 20px;
-    }
-    h1 { color: #4CAF50; }
-    .item {
-      padding: 10px;
-      margin: 5px 0;
-      background: #2c2c2c;
-      border-left: 5px solid #4CAF50;
-    }
+    body { font-family: Arial, sans-serif; background: #121212; color: #f0f0f0; padding: 20px; }
+    h1 { color: #76c043; }
+    .item { background: #222; padding: 10px; margin: 5px 0; border-left: 5px solid #76c043; }
   </style>
 </head>
 <body>
-  <h1>Grow a Garden: Legendary Gear & Egg Scanner</h1>
-  <p>Checking for items with <strong>Legendary</strong> or higher rarity in stock...</p>
-  <div id="results">Loading...</div>
+  <h1>Legendary Scanner: Eggs & Gear</h1>
+  <p>Looking for Legendary+ items in stock...</p>
+  <div id="results">Loading…</div>
 
   <script>
-    const API_URL = 'https://growagardenapi.vercel.app/api/stock/GetStock';
+    const API = 'https://gag-tracker-v2.onrender.com/api/gag-tracker';
+    const targetRarities = ['Legendary', 'Mythical', 'Divine'];
 
-    async function fetchStock() {
-      const res = await fetch(API_URL);
-      const data = await res.json();
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.innerHTML = ''; // Clear old results
+    async function scanStock() {
+      const resp = await fetch(API);
+      const json = await resp.json();
+      const results = document.getElementById('results');
+      results.innerHTML = '';
 
-      const legendaryItems = [];
-      const rarities = ['Legendary', 'Mythical', 'Divine']; // You can add more if needed
+      const matches = [];
 
-      // Scan Gear
-      data.gear.forEach(item => {
-        if (item.stock > 0 && rarities.includes(item.rarity)) {
-          legendaryItems.push({ ...item, type: 'Gear' });
+      const gs = json.general_stock || {};
+      // Gear items
+      (gs.gear || []).forEach(g => {
+        if (g.name && g.stock > 0 && targetRarities.includes(g.rarity)) {
+          matches.push({ ...g, type: 'Gear' });
+        }
+      });
+      // Seed items
+      (gs.seeds || []).forEach(s => {
+        if (s.name && s.stock > 0 && targetRarities.includes(s.rarity)) {
+          matches.push({ ...s, type: 'Seed' });
+        }
+      });
+      // Egg stock
+      (json.egg_stock?.egg || []).forEach(e => {
+        if (e.name && e.stock > 0 && targetRarities.includes(e.rarity)) {
+          matches.push({ ...e, type: 'Egg' });
         }
       });
 
-      // Scan Eggs
-      data.eggs.forEach(item => {
-        if (item.stock > 0 && rarities.includes(item.rarity)) {
-          legendaryItems.push({ ...item, type: 'Egg' });
-        }
-      });
-
-      if (legendaryItems.length > 0) {
-        legendaryItems.forEach(item => {
+      if (matches.length > 0) {
+        matches.forEach(item => {
           const div = document.createElement('div');
           div.className = 'item';
           div.innerHTML = `
-            <strong>${item.name}</strong> [${item.type}]<br>
+            <strong>${item.name}</strong> (${item.type})<br>
             Rarity: <span style="color: gold;">${item.rarity}</span><br>
             Stock: ${item.stock}
           `;
-          resultsDiv.appendChild(div);
+          results.appendChild(div);
         });
       } else {
-        resultsDiv.innerHTML = '<p>No Legendary+ gear or eggs in stock right now.</p>';
+        results.innerHTML = '<p>No Legendary+ items in stock right now.</p>';
       }
     }
 
-    // Initial load
-    fetchStock();
-
-    // Refresh every 30 seconds
-    setInterval(fetchStock, 30000);
+    scanStock();
+    setInterval(scanStock, 30000);
   </script>
 </body>
 </html>
