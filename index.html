@@ -1,42 +1,729 @@
-<!DOCTYPE html>
-<html><head><title>GAG Stock Scanner</title></head>
-<body>
-  <h1>Grow A Garden Scanner</h1>
-  <div id="results">Loading…</div>
-  <script>
-    const API = '/stock.json'; // Hosted JSON file
-    const rareRarities = ['Legendary', 'Mythical', 'Divine'];
-    const targetSeeds = ['Bamboo'];
-    const targetGear = ['Master Sprinkler'];
+<html lang="en"><head><script type="text/javascript" async="" defer="" src="https://ps.eyeota.net/pixel?e_rc=2&amp;pid=m51mh00&amp;t=ajs&amp;uid=user_d2eb86bf-38d2-41cb-a04f-44c568fc1ac3_1753427433245"></script><script type="text/javascript" async="" defer="" src="https://ps.eyeota.net/pixel?e_rc=1&amp;pid=m51mh00&amp;t=ajs&amp;uid=user_d2eb86bf-38d2-41cb-a04f-44c568fc1ac3_1753427433245"></script><script src="https://s0.2mdn.net/instream/video/client.js" async="" type="text/javascript"></script><script type="text/javascript" async="" src="https://cdn.intergient.com/pageos/V.20250722.1/videoPlayers/ima-based-player.js"></script><script src="https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202507220101/pubads_impl_page_level_ads.js"></script><script async="" src="https://secure.cdn.fastclick.net/js/cnvr-coreid/latest/coreid.min.js"></script><script async="" src="https://secure.cdn.fastclick.net/js/cnvr-launcher/latest/launcher.min.js"></script><script src="https://cdn.hadronid.net/hadron.js?url=https%3A%2F%2Fvulcanvalues.com%2Fgrow-a-garden%2Fstock&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;_it=amazon&amp;partner_id=403"></script><script type="text/javascript" async="" src="https://cdn.intergient.com/pageos/V.20250722.1/videoPlayers/ima-based-player.js"></script><script type="text/javascript" async="" src="https://cdn.id5-sync.com/api/1.0/id5PrebidModule.js"></script>
+  <link rel="icon" type="image/png" href="/icon.png">
+<script type="text/javascript" async="" src="//carbon-cdn.ccgateway.net/script?id=vulcanvalues.com&amp;parentId=5bb3e20859"></script><script async="" src="https://c.amazon-adsystem.com/aax2/apstag.js" id="pw_aps_tag"></script><script data-cfasync="false">
+  window.ramp = window.ramp || {};
+  window.ramp.que = window.ramp.que || [];
+</script>
+<script type="text/javascript" async="" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script><script type="text/javascript" async="" src="https://cdn.intergient.com/prebid/prebid.js"></script><script type="text/javascript" async="" src="https://cdn.intergient.com/ramp_core.js"></script><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9wSqI5i0iwGdf6L1CERNdmsTPgVu44ewj8QxTBYgsv1LCPUVF7YmWOvTappqB1139jAymxUW/RO8zmMqo4zlAAAAACNeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A+d7vJfYtay4OUbdtRPZA3y7bKQLsxaMEPmxgfhBGqKXNrdkCQeJlUwqa6EBbSfjwFtJWTrWIioXeMW+y8bWAgQAAACTeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202507220101/pubads_impl.js" async=""></script><link href="https://securepubads.g.doubleclick.net/pagead/managed/dict/m202507240101/gpt" rel="compression-dictionary"><script type="text/javascript" src="//cdn.intergient.com/pageos/V.20250722.1/pageos.js" async=""></script><script type="text/javascript" src="https://cdn.intergient.com/pageos/V.20250722.1/runtime.f0ba950b43140acd37d0.js"></script><script type="text/javascript" src="https://cdn.intergient.com/pageos/V.20250722.1/main.2cafe95288f4e1cebebe.js"></script><script async="" src="https://fundingchoicesmessages.google.com/i/154013155?ers=3"></script><link rel="stylesheet" href="https://config.playwire.com/1025075/v2/websites/75556/styles.css"><script type="text/javascript" src="https://btloader.com/tag?o=5150306120761344&amp;upapi=true" async=""></script><script type="text/javascript" src="https://tags.crwdcntrl.net/lt/c/17138/sync.min.js" async="" id="lotameScript"></script><script type="text/javascript">!function(a,l,b,c,k,s,t,g,A){a.CustomerConnectAnalytics=k,a[k]=a[k]||function(){ (a[k].q=a[k].q||[]).push(arguments)},g=l.createElement(b),A=l.getElementsByTagName(b)[0],g.type="text/javascript",g.async=!0,g.src=c+"?id="+s+"&parentId="+t,A.parentNode.insertBefore(g,A) }(window,document,"script","//carbon-cdn.ccgateway.net/script","cca",window.location.hostname,"5bb3e20859");</script><script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js" async=""></script><style type="text/css" id="pwCSSstyling">.pw-tag { text-align: center; opacity: 1}.pw-oop-tag {width: 1px; height: 1px; line-height:1px; position: fixed}.pw-tag-hidden { visibility: hidden; opacity: 0}.pw-in-article { padding: 20px 0; }.pw-in-article--size-logic__container { padding: 20px 0; }.pw-in-article--size-logic__container .pw-in-article { padding: 0; }.pw-in-article--size-logic {max-height: 500px;overflow: hidden;position:relative;} .pw-standardIAB-tag { margin: 10px 0; padding-bottom: 10px!important;}.pw-standardIAB--size-logic {max-height: 400px;overflow: hidden;position: relative;} .pw-in-article--size-logic::-webkit-scrollbar {display: none;} .pw-in-article_hidden { visibility: hidden; height:0; }.pw-sticky { position: sticky; top: 0; padding: 0 }.pw-sticky-corner #pw-close-video-container { display: none!important} .pw-sticky-corner { margin: 10px auto!important; top: 0px; z-index: unset!important; }div.pw-loading-spinner {text-align:center;width:100%;position: absolute;top: 0;left: 0;height: 100%;display: flex;justify-content: center;align-items: center;}div.pw-loading-spinner-gif {height: 100px;width: 100px;background-image:url(https://cdn.intergient.com/assets/pw_loading_icon.gif);background-repeat: no-repeat;background-size: contain;}div.pw-ad-container-logo {margin: 0 5px 5px 0;}.pw-fixed-mobile-leaderboard{ position: fixed;bottom: 0px;left: 50%;width: 320px;height:50px;margin-left:-160px;z-index: 2147483645;text-align: center;padding: 2px 0;background: rgba(0, 0, 0, 0.8);transition: opacity .6s ease-in}.fixed-mobile-close { cursor: pointer;border-top: 1px solid rgba(0,0,0,0.35);border-left: 1px solid rgba(0,0,0,0.35);border-right: 1px solid rgba(0,0,0,0.35);border-radius: 4px 4px 0 0; padding: 3px 6px 3px 6px;position: absolute; top: -22px; right: -1px; z-index: -1;background-color: rgba(0,0,0,0.55);box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);color: rgba(255,255,255,0.75);line-height: 1.2;font-size: 12px;font-family: Helvetica,Arial,sans-serif;-webkit-transition: all .5s ease-out;-moz-transition: all .5s ease-out;-o-transition: all .5s ease-out;transition: all .5s ease-out;}.pw-siderail-left-close { cursor: pointer;border-top: 1px solid rgba(0,0,0,0.35);border-left: 1px solid rgba(0,0,0,0.35);border-right: 1px solid rgba(0,0,0,0.35);border-radius: 4px 4px 0 0; padding: 3px 6px 3px 6px; position: absolute;top: -22px; left: -1px; z-index: -1; background-color: rgba(0,0,0,0.55);box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);color: rgba(255,255,255,0.75);line-height: 1.2;font-size: 12px;font-family: Helvetica,Arial,sans-serif;-webkit-transition: all .5s ease-out;-moz-transition: all .5s ease-out;-o-transition: all .5s ease-out;transition: all .5s ease-out;}.pw-siderail-right-close { cursor: pointer;border-top: 1px solid rgba(0,0,0,0.35);border-left: 1px solid rgba(0,0,0,0.35);border-right: 1px solid rgba(0,0,0,0.35);border-radius: 4px 4px 0 0; padding: 3px 6px 3px 6px; position: absolute;top: -22px; right: -1px; z-index: -1; background-color: rgba(0,0,0,0.55);box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);color: rgba(255,255,255,0.75);line-height: 1.2;font-size: 12px;font-family: Helvetica,Arial,sans-serif;-webkit-transition: all .5s ease-out;-moz-transition: all .5s ease-out;-o-transition: all .5s ease-out;transition: all .5s ease-out;}div[data-pw-desk="leaderboard_atf"].pw-sticky,div[data-pw-mobi="leaderboard_atf"].pw-sticky { z-index: 2147483645;position: fixed; top:0px; left:0px; width: 100%; padding: 20px 0;background: rgba(0,0,0,.2);overflow:hidden;transition: 750ms opacity ease-out;opacity: 1;border-bottom: 1px solid rgba(238, 238, 238, 0.4)}div[data-pw-desk="med_rect_atf"].pw-sticky { z-index: 2147483644;position: fixed; width: 300px; padding: 0; background: transparent;overflow:hidden;transition: 750ms opacity ease-out;opacity: 1;border-bottom: 20px solid #fff;border-top: 20px solid #fff}.pws-sticky:before {z-index: -1;-webkit-filter: blur(34px);width: 100%;height: 100%;content: "";position: absolute;top: 0px;left: 0px;background: rgba(0,0,0,.5);}.pw-sticky-hide{opacity: 0%;}#pw-oop-behind_page { z-index: 0}#pw-oop-site_skin { z-index: 0}#pw-oop-above_page { z-index: 2147483647}#pw-oop-top_rail { top: 0px; left:0px}#pw-oop-left_rail, #pw-oop-left_rail2  { left: 0px; top: 0px; position: fixed; box-sizing: content-box;height:600px}#pw-oop-right_rail, #pw-oop-right_rail2 { right: 0px; top: 0px; position: fixed; box-sizing: content-box;height:600px}.pw-tps{ display: none }#pw-oop-left_rail2, #pw-oop-right_rail2 {opacity: 0; }#tycheConsole{ background-color: #fff; border-top: 1px solid;font-family: Arial, Helvetica, sans-serif; font-size: 12px;position: fixed; bottom: 0; width: 100%; padding: 0 2% 2% 2%;z-index: 9999999999; box-sizing: border-box}#tycheConsole a:visited{ color: rgb(52, 152, 219) }#tycheConsole li:hover{background: rgba(52, 152, 219,.26)}.ad__name{ display:inline-block; width: 15%; font-weight:bold;}div[data-pw-desk="leaderboard_atf"] > div > iframe { margin:auto; }#pw-oop-bottom_rail > div > iframe { margin:auto; }.pw_rail_push_hide {transform: translateY(-250%); transition: 2s; }.pw_rail_push_show { opacity: 1; animation: showDiv 1s forwards; }@keyframes showDiv { 0% {transform: translateY(1000%); } 100% { transform: translateY(0);  opacity: 1; } }#video_backfill {position: relative; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%);z-index: 11}#video_backfill > .pw_report_ad_container { display: block}.pw-ad-container-hidden { background-image: none !important; }.pw-corner-ad-video.pw-hide {display: none}.pw-top-docked .pw-custom-ima-container {border-radius: 0!important;}#pw-oop-bottom_rail.pw-tag.pointer-modifier {pointer-events: none; border-top: unset !important;}.pw-corner-ad-video-container {width: 100%;height:100%;max-height:100%}.pw-close-btn { display: block; position: relative; height: 18px; width: 18px;  cursor: pointer; background: rgba(0,0,0,0.5); padding: 5px; margin: 5px; border-radius: 3px;}.pw-close-btn .inner { position: relative; height: 100%; display: flex; align-items: center; cursor: pointer;}.pw-close-btn .inner::before, .pw-close-btn .inner:after { content: ""; position: absolute; height: 2px; width: 14px; background-color: #FFF;left: 50%; top: 50%; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);}.pw-close-btn .inner::before { transform: translate(-50%, -50%) rotate(-45deg); }.pw-close-btn .inner::after { transform: translate(-50%, -50%) rotate(45deg); }.pw-clearfix{clear:both}.pw-border-incontent-before { flex-grow: 1; margin-right: 10px; }.pw-border-incontent-after { flex-grow: 1; margin-left: 10px; } .pw-footer-container-incontent { display: flex; align-items: center; position: absolute; bottom: 0; width: 100%; height: 1px;}.pw-precontent-ad-video {background: rgba(0,0,0,0);position: relative;top: 0;left: 0;border-radius:8px;}#precontent_ad_video {left: 50%;transform: translate(-50%, 0);margin: 0!important}.pw-precontent-ad-video.pw-hide {display: none!important}.pw-precontent-ad-video-container {width: 100%;height:100%;max-height:100%}.pw-precontent-ad-video-loader {position: relative!important;border-radius:8px;}.pw-three-bounce,.pw-three-bounce:before,.pw-three-bounce:after {animation: load7 1.8s infinite ease-in-out;border-radius: 50%;height: 30px!important;-webkit-animation-fill-mode: both;animation-fill-mode: both;-webkit-animation: load7 1.8s infinite ease-in-out;width: 30px!important;}.pw-three-bounce {font-size: 10px;position: absolute!important;top: 50%;left: 50%;transform: translate(-50%, -50%);text-indent: -9999em;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation-delay: -0.16s;animation-delay: -0.16s;}.pw-three-bounce:before,.pw-three-bounce:after {content: "";position: absolute;top: 0;}.pw-three-bounce:before {left: -42px;-webkit-animation-delay: -0.32s;animation-delay: -0.32s;}.pw-three-bounce:after {left: 42px;}@-webkit-keyframes load7 {0%,80%,100% { box-shadow: 0 30px 0 -15px; }40% { box-shadow: 0 30px 0 0; }}@keyframes load7 {0%,80%,100% { box-shadow: 0 30px 0 -15px; }40% { box-shadow: 0 30px 0 0; }}.pw-rotating-plane {width: 40px;height: 40px;position: absolute!important;top: 50%;left: 50%;transform: translate(-50%, -50%);-webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;animation: sk-rotateplane 1.2s infinite ease-in-out}@-webkit-keyframes sk-rotateplane {0% { -webkit-transform: perspective(120px) }50% { -webkit-transform: perspective(120px) rotateY(180deg) }100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }}@keyframes sk-rotateplane {0% {transform: perspective(120px) rotateX(0deg) rotateY(0deg);-webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)} 50% {transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);-webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)} 100% {transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);-webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);}}.pw-rectangle-bounce {width: 60px;height: 60px;text-align: center;font-size: 10px;position: absolute!important;top: 50%;left: 50%;transform: translate(-50%, -50%);}.pw-rectangle-bounce > div {height: 100%;width: 8px;margin-right: 4px;display: inline-block;-webkit-animation: stretchdelay 1.2s infinite ease-in-out;animation: stretchdelay 1.2s infinite ease-in-out;}.pw-rectangle-bounce #rect2 {-webkit-animation-delay: -1.1s;animation-delay: -1.1s;}.pw-rectangle-bounce #rect3 {-webkit-animation-delay: -1.0s;animation-delay: -1.0s;}.pw-rectangle-bounce #rect4 {-webkit-animation-delay: -0.9s;animation-delay: -0.9s;}.pw-rectangle-bounce #rect5 {-webkit-animation-delay: -0.8s;animation-delay: -0.8s;}@-webkit-keyframes stretchdelay {0%, 40%, 100% { -webkit-transform: scaleY(0.4) }20% { -webkit-transform: scaleY(1.0) }}@keyframes stretchdelay {0%, 40%, 100% {transform: scaleY(0.4);-webkit-transform: scaleY(0.4);}  20% {transform: scaleY(1.0);-webkit-transform: scaleY(1.0);}}.pw-hide-in-content-out-of-view {display: none; visibility: hidden}.pw-ignore-content-width-restrictions {overflow: visible!important}.playwire_report_ad_link {height: 20px;}#corner_top-docked_parent_container {background-color: #000000;width: 100vw; margin-left: calc(-50vw + 50%); border-radius: unset!important; z-index: 99999999999;}.pw-top-docked {margin:0!important; background-color: rgba(0, 0, 0, 0.9);height:100%!important;width:100%!important; position: relative; max-width: 100%;}#corner_top-docked_parent_container.pw-sticky-video-wrapper {z-index: 99999999999; display: flex; justify-content: center; width: 100%!important; height: auto!important; margin: 0!important; left: 0;}#corner_top-docked_parent_container .pw-sticky-video {width: 100%; transition: opacity 820ms cubic-bezier(0.230, 1.000, 0.320, 1.000);-webkit-transition: opacity 720ms cubic-bezier(0.230, 1.000, 0.320, 1.000);box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.75);border-radius: unset; height:100%!important;}#corner_top-docked_parent_container.pw-docked {top: 0px!important; left: 0px!important; display: flex; justify-content: center;}#corner_top-docked_parent_container.pw-undocked {background-color: #000000;}.pw-undocked .pw-sticky-video {height:auto!important;}#corner_top-docked_parent_container.pw-hide {display: none}.pw-corner-ad-video.pw-top-docked {margin: 0!important; background-color: rgba(0, 0, 0, 0.9); width: 100vw !important;}.pw-top-docked #pw-close-video-container {display: none!important;}.pw-corner-ad-video.pw-sticky-video #pw-close-video-container {top: 0!important; left: unset!important; right: -18px!important;}#pw-oop-flex_container.gumgum-accommodate {height: 0! important; display: block! important;}#pw-oop-flex_container.gumgum-accommodate #pw-oop-flex, #pw-oop-flex_container.gumgum-accommodate #pw-oop-flex > div, #pw-oop-flex_container.gumgum-accommodate #pw-oop-flex > div > iframe {height: 0! important;}.show-ad-button { display: block; margin: 0 auto; color: #4db2ec; background: none; border: 1px solid #4db2ec; font-family: "Open Sans", arial, sans-serif; font-size: 10px;}</style><script type="text/javascript" src="https://ps.eyeota.net/pixel?pid=m51mh00&amp;t=ajs&amp;uid=user_d2eb86bf-38d2-41cb-a04f-44c568fc1ac3_1753427433245" async="" defer=""></script><script src="https://config.aps.amazon-adsystem.com/configs/bd056b42-51db-43ce-9a8e-3b11319b5d1f" type="text/javascript" async="async"></script><script src="//secure.cdn.fastclick.net/js/pubcid/latest/pubcid.min.js"></script><script src="https://tags.crwdcntrl.net/lt/c/16576/sync.min.js"></script><script src="https://tag.wknd.ai/8304/i.js" async=""></script><script src="//cdn.id5-sync.com/api/1.0/id5-api.js"></script><script type="text/javascript" async="" src="https://secure.cdn.fastclick.net/js/cnvr-launcher/latest/launcher-stub.min.js"></script><iframe src="https://btloader.com/trustedIframe.html?o=5150306120761344&amp;tid=EmgVnt06-8TpxawxM-98406b9033&amp;upapi=true" referrerpolicy="origin" style="display: none !important; width: 0px !important; height: 0px !important;"></iframe><script async="" src="https://fundingchoicesmessages.google.com/f/AGSKWxUgjw4QZKXkOpOddS2Zd9tZ2gYJHhAMGSGxn5zQ8lKF4vh-99uG7Xo6iiGBIrKnrfhkp2ZhrN44LV8IR9aSltL_n-2rCN7sgGAgnDeWZ1LjM_RF9Yos1BNUd2ax2gs59haOurFuEA==?fccs=W1siQUtzUm9sLU9ONGxqQnRydzViNEVDS0FJWFhLUzJIcnlDd1A4UlRicHN1UTczYndsVGlQZTJNSVh0RWtUdzNMZ0tRODNvQkh5czB3TkVPUEQtS3VSbUUydHkwVUtiUXlOZ0xLSWRHdmFtblVqbTBpdzlJUld1TjlYZGx0SFpoTHpnR1FQNzhSWnQ3M3lWMDNaRXprMjl4d2s0MUJzOGpfSDNBPT0iXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWzE3NTM0Mjc0NDcsOTkzMDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbN11dLCJodHRwczovL3Z1bGNhbnZhbHVlcy5jb20vZ3Jvdy1hLWdhcmRlbi9zdG9jayIsbnVsbCxbWzgsIlFuNDREVjBHMm5ZIl0sWzksImZyIl0sWzIzLCIxNzUzNDI3NDM0Il0sWzE5LCIyIl0sWzE3LCJbMF0iXSxbMjQsInd3dy5nb29nbGUuY29tIl0sWzI5LCJmYWxzZSJdXV0"></script><script async="" src="https://fundingchoicesmessages.google.com/f/AGSKWxXeZacUM_bPj5O_fRL0H_M3wsodE2C0ul3BeXXOsLTY88me9t4ZJguyirk2HDYHCS0VEKpuCMtakEcRkexO301U-YgozSf4IXHORWl06mT3XU-wEXwVPNs5q_DZlXOt1Dqdc6_YFA==?fccs=W1siQUtzUm9sLU9ONGxqQnRydzViNEVDS0FJWFhLUzJIcnlDd1A4UlRicHN1UTczYndsVGlQZTJNSVh0RWtUdzNMZ0tRODNvQkh5czB3TkVPUEQtS3VSbUUydHkwVUtiUXlOZ0xLSWRHdmFtblVqbTBpdzlJUld1TjlYZGx0SFpoTHpnR1FQNzhSWnQ3M3lWMDNaRXprMjl4d2s0MUJzOGpfSDNBPT0iXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWzE3NTM0Mjc0NDgsMTUzMDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbNyw5XSxudWxsLDIsbnVsbCwiZW4iXSwiaHR0cHM6Ly92dWxjYW52YWx1ZXMuY29tL2dyb3ctYS1nYXJkZW4vc3RvY2siLG51bGwsW1s4LCJRbjQ0RFYwRzJuWSJdLFs5LCJmciJdLFsyMywiMTc1MzQyNzQzNCJdLFsxOSwiMiJdLFsxNywiWzBdIl0sWzI0LCJ3d3cuZ29vZ2xlLmNvbSJdLFsyOSwiZmFsc2UiXV1d"></script><script async="" src="https://fundingchoicesmessages.google.com/f/AGSKWxVVJ5kI1lOtucRslodlEnV4akh7sVXmke4XkynVUHC9MjDkLFhQOjebMvHSAVsBebWnufi2uWz_i7w7RHz42oG-ZfzlYeYBGuaG8lFfwxjBO2fzFIWuQLDvFy1MQYPP-ZrANC5JrA==?fccs=W1siQUtzUm9sLU9ONGxqQnRydzViNEVDS0FJWFhLUzJIcnlDd1A4UlRicHN1UTczYndsVGlQZTJNSVh0RWtUdzNMZ0tRODNvQkh5czB3TkVPUEQtS3VSbUUydHkwVUtiUXlOZ0xLSWRHdmFtblVqbTBpdzlJUld1TjlYZGx0SFpoTHpnR1FQNzhSWnQ3M3lWMDNaRXprMjl4d2s0MUJzOGpfSDNBPT0iXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWzE3NTM0Mjc0NDgsODk5MDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbNyw5LDZdLG51bGwsMixudWxsLCJlbiIsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLDFdLCJodHRwczovL3Z1bGNhbnZhbHVlcy5jb20vZ3Jvdy1hLWdhcmRlbi9zdG9jayIsbnVsbCxbWzgsIlFuNDREVjBHMm5ZIl0sWzksImZyIl0sWzIzLCIxNzUzNDI3NDM0Il0sWzE5LCIyIl0sWzE3LCJbMF0iXSxbMjQsInd3dy5nb29nbGUuY29tIl0sWzI5LCJmYWxzZSJdXV0"></script><meta http-equiv="origin-trial" content="A9AxgGSwmnfgzzkyJHILUr3H8nJ/3D+57oAsL4DBt4USlng4jZ0weq+fZtHC/Qwwn6gd4QSa5DzT3OBif+kXVA0AAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><script src="//assets.bounceexchange.com/assets/smart-tag/versioned/onsite-v2_c05f8c5551fa6b964660ad61916291c1.br.js" async="" type="text/javascript"></script><script src="//assets.bounceexchange.com/assets/smart-tag/versioned/ads-v2_ba8ae19a5bf9548f3d50df1e54121805.br.js" async="" type="text/javascript"></script><script src="https://assets.bounceexchange.com/assets/bounce/jquery-3.7.1.min.js" async=""></script><script src="//assets.bounceexchange.com/cache/8304/website-10a8bd5560bfea89c83fb25fd2b2e817.js" type="text/javascript" async="async"></script><script src="//assets.bounceexchange.com/cache/8304/campaign-index-live-3eef8b1aa8b65cf771fa5ecdd44f1f0e.js" type="text/javascript" async="async"></script><script src="https://api.bounceexchange.com/state/js?website_id=8304&amp;device_id=2349019777198620339&amp;visit_id=1753427437312866" type="text/javascript" async="async"></script><script src="//assets.bounceexchange.com/cache/8304/campaigns/3025596-093b44b2adde1a790ebc29c0a110ebb1.js" type="text/javascript" async="async"></script><link id="creativesBaseStyles" rel="stylesheet" href="//assets.bounceexchange.com/tag/css/creatives-base-styles.a53944a2.min.css" type="text/css"><script async="" type="text/javascript" src="https://static.criteo.net/js/ld/publishertag.js" id="wknd-criteo"></script><iframe src="https://btloader.com/trustedIframe.html?o=5150306120761344&amp;tid=EmgVnt06-8TpxawxM-98406b9033&amp;upapi=true" referrerpolicy="origin" style="display: none !important; width: 0px !important; height: 0px !important;"></iframe><script type="text/javascript" async="" defer="" src="https://d2qlq4kdetaeuz.cloudfront.net/eyewise-id-module/eyewise-id-module-cookies-consent.js?token=dGVzdHRva2VuOg=="></script><meta http-equiv="origin-trial" content="A9AxgGSwmnfgzzkyJHILUr3H8nJ/3D+57oAsL4DBt4USlng4jZ0weq+fZtHC/Qwwn6gd4QSa5DzT3OBif+kXVA0AAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9AxgGSwmnfgzzkyJHILUr3H8nJ/3D+57oAsL4DBt4USlng4jZ0weq+fZtHC/Qwwn6gd4QSa5DzT3OBif+kXVA0AAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9AxgGSwmnfgzzkyJHILUr3H8nJ/3D+57oAsL4DBt4USlng4jZ0weq+fZtHC/Qwwn6gd4QSa5DzT3OBif+kXVA0AAAB4eyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="></head><body class="bg-[#111215] text-white font-sans" aria-hidden="false" style=""><div id="pw-oop-flex_container"><div id="pw-oop-flex" class="pw-tag pw-oop-tag" data-google-query-id="CLmRzqG6144DFXSPWgUdp3IVAQ" data-pw-status="rendered"><div id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-flex/1025075-w:75556-flex-ROS_0__container__" style="border: 0pt none;"></div></div></div><div id="consent-banner" style="position: fixed; top: 0px; right: 0px; margin-top: 16px; margin-right: 16px; width: 256px; z-index: 9999; display: block;">
+    <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center;">
+                <img src="https://www.svgrepo.com/show/401340/cookie.svg" alt="Cookie" style="height: 24px; width: 24px; margin-right: 8px;">
+                <span style="color: #4b5563; font-weight: bold; font-size: 0.875rem;">Cookie Policy</span>
+            </div>
+            <button style="color: #6b7280; cursor: pointer; background: none; border: none;" onclick="if (!window.__cfRLUnblockHandlers) return false; document.getElementById('consent-banner').style.display='none';">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="height: 16px; width: 16px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <p style="color: #6b7280; font-size: 0.875rem;">
+            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+        </p>
+        <button id="accept" style="margin-top: 16px; background-color: #14b8a6; color: white; font-weight: bold; padding: 8px 16px; border-radius: 8px; transition: background-color 0.3s;" onmouseover="if (!window.__cfRLUnblockHandlers) return false; this.style.backgroundColor='#0d9488'" onmouseout="if (!window.__cfRLUnblockHandlers) return false; this.style.backgroundColor='#14b8a6'">
+            Accept
+        </button>
+    </div>
+</div>
 
-    async function scan() {
-      const res = await fetch(API);
-      const data = await res.json();
-      const results = [];
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GW189JLGRF" type="text/javascript"></script>
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
 
-      data.seeds.forEach(s => {
-        if (s.stock > 0 && (targetSeeds.includes(s.name) || rareRarities.includes(s.rarity))) {
-          results.push({ ...s, type: 'Seed' });
-        }
-      });
-      data.gear.forEach(g => {
-        if (g.stock > 0 && (targetGear.includes(g.name) || rareRarities.includes(g.rarity))) {
-          results.push({ ...g, type: 'Gear' });
-        }
-      });
-      data.egg.forEach(e => {
-        if (e.stock > 0 && rareRarities.includes(e.rarity)) {
-          results.push({ ...e, type: 'Egg' });
-        }
-      });
+  // Check if consent has already been granted and defer Analytics initialization accordingly
+  if (localStorage.getItem('cookieConsent') === 'accepted') {
+    // If consent is already given, hide the banner and run the analytics script
+    document.getElementById('consent-banner').style.display = 'none';
+    gtag('js', new Date());
+    gtag('config', 'G-GW189JLGRF'); // Only run after consent
+  } else {
+    // Show the consent banner if not accepted yet
+    const consentBanner = document.getElementById('consent-banner');
+    consentBanner.style.display = 'block';
 
-      const el = document.getElementById('results');
-      el.innerHTML = results.length
-        ? results.map(i => `<div><b>${i.name}</b> (${i.type}) x${i.stock}</div>`).join('')
-        : '<p>No target items in stock.</p>';
+    // Listen for user decision
+    document.getElementById('accept').addEventListener('click', function() {
+      setConsent('accept');
+    });
+  }
+
+  // Function to set consent state after the user clicks accept
+  function setConsent(choice) {
+    if (choice === 'accept') {
+      localStorage.setItem('cookieConsent', 'accepted');
+      gtag('consent', 'default', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-GW189JLGRF'); // Only now run the tracking script
+    }
+    // Hide banner after decision
+    document.getElementById('consent-banner').style.display = 'none';
+  }
+</script>
+
+  <link href="/output.css" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="VulcanValues">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VulcanValues">
+  <meta property="og:url" content="https://vulcanvalues.com/">
+  <link rel="icon" type="image/png" href="/icon.webp" sizes="16x16">
+  <link rel="canonical" href="https://vulcanvalues.com/grow-a-garden/stock">
+  <meta name="description" content="See the current Grow A Garden stock for seed, easter or gear shop, so you know exactly what fruits are currently in the shops.">
+  <meta name="keywords" content="Roblox trading, value list, item worth calculator, trading community, market trends, Roblox trade ads, Roblox economy, trading strategy, game item values, Vulcan Values, Roblox, Grow A Garden, BF, Grow A Garden Values, Grow A Garden Value List, One Piece, Grow A Garden Stock, Grow A Garden Current Stocks, Grow A Garden Gear Stock, Grow A Garden Seed Stock, Grow A Garden Easter Stock">
+  <meta name="theme-color" content="#FFFF00">
+    <title>Grow A Garden Stocks | Vulcan</title>
+  <style>
+.rainbow-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+  background-size: 1600% 1600%;
+  animation: rainbow 28s ease infinite;
+  z-index: 0;
+}
+
+.rainbow-button span {
+  position: relative;
+  z-index: 1;
+  text-shadow: 3px 3px 15px black;  /* Optional: add white shadow for better contrast */
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+
+<header class="bg-[#1a1b1e] shadow-lg py-4 sticky top-0 z-50">
+  <div class="container mx-auto flex items-center justify-between px-4">
+    <!-- Logo -->
+    <a href="/" class="flex items-center text-yellow-500 hover:text-yellow-400">
+      <img src="/icon.webp" alt="Logo" class="w-8 h-8">
+      <span class="text-2xl font-bold">&nbsp;VulcanValues</span>
+    </a>
+
+    <!-- Mobile Menu Button (Hidden on larger screens) -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-white hover:text-yellow-500 focus:outline-none transition-colors duration-300">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop Navigation (Hidden on smaller screens) -->
+    <nav class="hidden md:block">
+      <ul class="flex space-x-8">
+        <li><a href="/grow-a-garden/fruits" class="hover:text-yellow-500 transition-colors duration-300">Fruits</a></li>
+        <li><a href="/grow-a-garden/stock" class="hover:text-yellow-500 transition-colors duration-300">Stock</a></li>
+        <li><a href="https://growagarden.gg/trading" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Trading</a></li>
+        <li><a href="https://growagarden.gg/vouch" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Vouches</a></li>
+        <li><a href="https://growagarden.gg/middleman" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Middleman</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-[#1a1b1e] border-t border-gray-200 transition-height duration-300 ease-in-out">
+    <ul class="px-4 py-2">
+        <li><a href="/grow-a-garden/fruits" class="hover:text-yellow-500 transition-colors duration-300">Fruits</a></li>
+        <li><a href="/grow-a-garden/stock" class="hover:text-yellow-500 transition-colors duration-300">Stocks</a></li>
+        <li><a href="https://growagarden.gg/trading" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Trading</a></li>
+        <li><a href="https://growagarden.gg/vouch" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Vouches</a></li>
+        <li><a href="https://growagarden.gg/middleman" class="hover:text-yellow-500 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Middleman</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+<script type="text/javascript">
+
+  // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.style.height = mobileMenu.scrollHeight + "px"; // Set height for transition
+        } else {
+            mobileMenu.style.height = "0";
+        }
+    });
+
+    // Toggle mobile services dropdown
+    const servicesDropdownToggle = document.getElementById('services-dropdown-toggle');
+    const servicesDropdown = document.getElementById('services-dropdown');
+
+    servicesDropdownToggle.addEventListener('click', () => {
+        servicesDropdown.classList.toggle('hidden');
+    });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const servicesButton = document.getElementById("services-button");
+  const servicesDropdown = document.getElementById("services-dropdown");
+
+  // Toggle dropdown visibility on button click
+  servicesButton.addEventListener("click", () => {
+    servicesDropdown.classList.toggle("hidden");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (event) => {
+    if (!servicesButton.contains(event.target) && !servicesDropdown.contains(event.target)) {
+      servicesDropdown.classList.add("hidden");
+    }
+  });
+
+    function openModal() {
+      document.getElementById('discordModal').classList.remove('hidden');
     }
 
-    scan();
-    setInterval(scan, 30000);
-  </script>
-</body></html>
+    function closeModal() {
+      document.getElementById('discordModal').classList.add('hidden');
+    }
+
+    // Show popup after 5 seconds
+    setTimeout(openModal, 5000);
+
+    // Make sure the close button works too
+    document.getElementById('discordModal').querySelector('button').addEventListener('click', closeModal);
+
+});
+</script>
+
+
+
+  <!-- Main Content -->
+  <div class="flex flex-col items-center text-center mt-16">
+    <header class="mb-8">
+      <h1 class="text-xl font-bold">Grow A Garden Stocks Right Now</h1>
+<div class="max-w-screen-md mx-auto px-4">
+  <p class="text-sm leading-snug whitespace-normal">
+    Live Grow A Garden stocks for the seed, easter and gear shop. The stock data is automatically pulled from the in-game shops when it's time to change, ensuring the most accurate stocks all the time. Seed and gear stocks updates every 5 minutes and easter stock updates every hour.
+  </p>
+</div>
+
+    </header>
+
+<!-- Main Links Section -->
+<div class="container mx-auto p-6 text-center">
+  <h2 class="text-lg font-semibold mb-4">Our Links:</h2>
+  <div class="space-x-4">
+    <!-- Discord Trading Server Button -->
+    <a href="https://discord.gg/growagardens" class="inline-block bg-black text-white hover:bg-gray-700 px-5 py-3 rounded text-lg">Discord Trading Server</a>
+    
+    <!-- Discord Values Bot Button -->
+    <a href="https://discord.com/oauth2/authorize?client_id=1073950529140568074" class="inline-block bg-black text-white hover:bg-gray-700 px-5 py-3 rounded text-lg">Discord Values Bot</a>
+  </div>
+</div>
+
+<div class="border-t border-gray-700 my-8 w-full"></div>
+
+<!-- Join Our Discord Section -->
+<div class="container mx-auto p-6">
+  <div class="bg-gradient-to-b from-[#1a1a1a] to-[#111] rounded-3xl p-8 shadow-2xl text-center">
+    <h2 class="text-3xl font-extrabold text-yellow-400 mb-4">🌱 Join Our Grow A Garden Discord!</h2>
+
+    <p class="text-gray-300 text-xl mb-6">
+      Be part of the trading community, get help, trade seeds and gear, and chat with other players!
+    </p>
+
+<a href="https://discord.gg/growagardens" target="_blank" class="rainbow-button font-bold py-3 px-6 rounded-full text-lg shadow-md transition hover:scale-105 inline-block mt-8 relative overflow-hidden text-black">
+  <span class="relative z-10">Join Now</span>
+</a>
+
+
+  </div>
+</div>
+
+
+
+
+<!-- Divider -->
+<div class="border-t border-gray-700 my-8 w-full"></div>
+
+<div class="text-center my-6">
+  <button onclick="if (!window.__cfRLUnblockHandlers) return false; location.reload();" class="hover:bg-yellow-500 text-black font-bold py-2 px-6 rounded-full text-sm shadow-md transition hover:scale-105" style="background-color: #facc15; color: black !important;">
+    Refresh Now
+  </button>
+</div>
+
+
+
+<!-- Additional Stocks Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 text-left max-w-screen-lg mx-auto">
+
+  <!-- Gear Stock -->
+  <div>
+    <h2 class="text-xl font-bold mb-2 text-center">GEAR STOCK</h2>
+    <p class="text-yellow-400 text-xs font-bold mb-4 text-center">
+      UPDATES IN: <span id="countdown-gear" class="text-white">01m 19s</span>
+    </p>
+    <ul class="space-y-2">
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/TanningMirror.png" class="w-6 h-6 rounded-full object-cover" alt="Tanning Mirror">
+    <span>Tanning Mirror <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/RecallWrench.png" class="w-6 h-6 rounded-full object-cover" alt="Recall Wrench">
+    <span>Recall Wrench <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Trowel.png" class="w-6 h-6 rounded-full object-cover" alt="Trowel">
+    <span>Trowel <span class="text-gray-400">x3</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/WateringCan.png" class="w-6 h-6 rounded-full object-cover" alt="Watering Can">
+    <span>Watering Can <span class="text-gray-400">x3</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/FavoriteTool.png" class="w-6 h-6 rounded-full object-cover" alt="Favorite Tool">
+    <span>Favorite Tool <span class="text-gray-400">x2</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/CleaningSpray.png" class="w-6 h-6 rounded-full object-cover" alt="Cleaning Spray">
+    <span>Cleaning Spray <span class="text-gray-400">x2</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/HarvestTool.png" class="w-6 h-6 rounded-full object-cover" alt="Harvest Tool">
+    <span>Harvest Tool <span class="text-gray-400">x2</span></span>
+  </li>
+
+    </ul>
+  </div>
+
+  <!-- Egg Stock -->
+  <div>
+    <h2 class="text-xl font-bold mb-2 text-center">EGG STOCK</h2>
+    <p class="text-yellow-400 text-xs font-bold mb-4 text-center">
+      UPDATES IN: <span id="countdown-egg" class="text-white">00h 16m 19s</span>
+    </p>
+    <ul class="space-y-2">
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/CommonEgg.png" class="w-6 h-6 rounded-full object-cover" alt="Common Egg">
+    <span>Common Egg <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/CommonEgg.png" class="w-6 h-6 rounded-full object-cover" alt="Common Egg">
+    <span>Common Egg <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/CommonEgg.png" class="w-6 h-6 rounded-full object-cover" alt="Common Egg">
+    <span>Common Egg <span class="text-gray-400">x1</span></span>
+  </li>
+
+    </ul>
+  </div>
+
+  <!-- Seeds Stock -->
+  <div>
+    <h2 class="text-xl font-bold mb-2 text-center">SEEDS STOCK</h2>
+    <p class="text-yellow-400 text-xs font-bold mb-4 text-center">
+      UPDATES IN: <span id="countdown-seeds" class="text-white">01m 19s</span>
+    </p>
+    <ul class="space-y-2">
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Carrot.png" class="w-6 h-6 rounded-full object-cover" alt="Carrot">
+    <span>Carrot <span class="text-gray-400">x10</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Strawberry.png" class="w-6 h-6 rounded-full object-cover" alt="Strawberry">
+    <span>Strawberry <span class="text-gray-400">x4</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Watermelon.png" class="w-6 h-6 rounded-full object-cover" alt="Watermelon">
+    <span>Watermelon <span class="text-gray-400">x3</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Tomato.png" class="w-6 h-6 rounded-full object-cover" alt="Tomato">
+    <span>Tomato <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Blueberry.png" class="w-6 h-6 rounded-full object-cover" alt="Blueberry">
+    <span>Blueberry <span class="text-gray-400">x5</span></span>
+  </li>
+
+    </ul>
+  </div>
+
+  <!-- Egg Stock -->
+  <div>
+    <h2 class="text-xl font-bold mb-2 text-center">EVENT STOCK</h2>
+    <p class="text-yellow-400 text-xs font-bold mb-4 text-center">
+      UPDATES IN: <span id="countdown-honey" class="text-white">00h 46m 19s</span>
+    </p>
+    <ul class="space-y-2">
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/ZenSeedPack.png" class="w-6 h-6 rounded-full object-cover" alt="Zen Seed Pack">
+    <span>Zen Seed Pack <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/TranquilRadar.png" class="w-6 h-6 rounded-full object-cover" alt="Tranquil Radar">
+    <span>Tranquil Radar <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Zenflare.png" class="w-6 h-6 rounded-full object-cover" alt="Zenflare">
+    <span>Zenflare <span class="text-gray-400">x5</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/SoftSunshine.png" class="w-6 h-6 rounded-full object-cover" alt="Soft Sunshine">
+    <span>Soft Sunshine <span class="text-gray-400">x1</span></span>
+  </li>
+
+    </ul>
+  </div>
+
+  <!-- Egg Stock -->
+  <div>
+    <h2 class="text-xl font-bold mb-2 text-center">COSMETICS STOCK</h2>
+    <p class="text-yellow-400 text-xs font-bold mb-4 text-center">
+      UPDATES IN: <span id="countdown-cosmetics" class="text-white">01h 46m 19s</span>
+    </p>
+    <ul class="space-y-2">
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/StatueCrate.png" class="w-6 h-6 rounded-full object-cover" alt="Statue Crate">
+    <span>Statue Crate <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/SignCrate.png" class="w-6 h-6 rounded-full object-cover" alt="Sign Crate">
+    <span>Sign Crate <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/MiniTV.png" class="w-6 h-6 rounded-full object-cover" alt="Mini TV">
+    <span>Mini TV <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/SmallWoodFlooring.png" class="w-6 h-6 rounded-full object-cover" alt="Small Wood Flooring">
+    <span>Small Wood Flooring <span class="text-gray-400">x3</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Torch.png" class="w-6 h-6 rounded-full object-cover" alt="Torch">
+    <span>Torch <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/SmallPathTile.png" class="w-6 h-6 rounded-full object-cover" alt="Small Path Tile">
+    <span>Small Path Tile <span class="text-gray-400">x3</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/BrownBench.png" class="w-6 h-6 rounded-full object-cover" alt="Brown Bench">
+    <span>Brown Bench <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/SmallStoneTable.png" class="w-6 h-6 rounded-full object-cover" alt="Small Stone Table">
+    <span>Small Stone Table <span class="text-gray-400">x1</span></span>
+  </li>
+
+  <li class="bg-gray-900 p-3 rounded-md border border-gray-700 text-white font-medium flex items-center space-x-3">
+    
+    <img src="/images/Cabana.png" class="w-6 h-6 rounded-full object-cover" alt="Cabana">
+    <span>Cabana <span class="text-gray-400">x1</span></span>
+  </li>
+
+    </ul>
+  </div>
+
+</div>
+
+
+
+  <!-- Discord Community Section -->
+  <div class="text-center my-8">
+    <h1 class="text-base font-bold mb-2">Join Our Discord Trading Community!</h1>
+    <p class="mb-4">
+      <a href="https://discord.gg/growagardens" class="text-yellow-400 hover:underline">discord.gg/growagardens</a>
+    </p>
+    <p>Be part of our community, get help, chat, suggest ideas, and trade with other members.</p>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="text-center py-4 border-t border-gray-700 text-sm">
+    <p>© 2024 VulcanValues. All Rights Reserved.</p>
+    <script data-cfasync="false" async="" src="//cdn.intergient.com/1025075/75556/ramp.js"></script>
+    <nav class="mt-2 space-x-2">
+      <a href="/" class="text-yellow-400 hover:underline">Home</a>
+      <span>|</span>
+      <a href="/invite" class="text-yellow-400 hover:underline">Add Our Bot</a>
+      <span>|</span>
+      <a href="/PrivacyPolicy" class="text-yellow-400 hover:underline">Privacy Policy</a>
+      <span>|</span>
+      <a href="/TermsOfService" class="text-yellow-400 hover:underline">Terms &amp; Conditions</a>
+    </nav>
+  </footer>
+<script type="text/javascript">
+  // Helper: pad numbers to two digits
+  function pad(n) {
+    return n < 10 ? '0' + n : n;
+  }
+
+  function updateCountdowns() {
+    const now = new Date();
+
+    // 1) EGG STOCK = next 30-minute mark
+    const nextHalfHour = new Date(now);
+    const minutes = now.getMinutes();
+    if (minutes < 30) {
+      nextHalfHour.setMinutes(30, 0, 0);
+    } else {
+      nextHalfHour.setHours(now.getHours() + 1);
+      nextHalfHour.setMinutes(0, 0, 0);
+    }
+
+    const distEgg = nextHalfHour - now;
+    const hEgg = Math.floor(distEgg / 3.6e6);
+    const mEgg = Math.floor((distEgg % 3.6e6) / 6e4);
+    const sEgg = Math.floor((distEgg % 6e4) / 1000);
+    document.getElementById("countdown-egg").textContent =
+      `${pad(hEgg)}h ${pad(mEgg)}m ${pad(sEgg)}s`;
+
+    // 2) GEAR & SEEDS STOCK = next 5-minute interval
+    const next5 = new Date(now);
+    const nextM = Math.ceil((now.getMinutes() + (now.getSeconds() > 0 ? 1 : 0)) / 5) * 5;
+    if (nextM === 60) {
+      next5.setHours(next5.getHours() + 1);
+      next5.setMinutes(0, 0, 0);
+    } else {
+      next5.setMinutes(nextM, 0, 0);
+    }
+
+    const dist5 = next5 - now;
+    const m5 = Math.floor(dist5 / 6e4);
+    const s5 = Math.floor((dist5 % 6e4) / 1000);
+    const text5 = `${pad(m5)}m ${pad(s5)}s`;
+    document.getElementById("countdown-gear").textContent = text5;
+    document.getElementById("countdown-seeds").textContent = text5;
+
+    // 3) HONEY STOCK = next full hour
+    const nextHour = new Date(now);
+    nextHour.setHours(now.getHours() + 1);
+    nextHour.setMinutes(0, 0, 0);
+
+    const distHoney = nextHour - now;
+    const hHoney = Math.floor(distHoney / 3.6e6);
+    const mHoney = Math.floor((distHoney % 3.6e6) / 6e4);
+    const sHoney = Math.floor((distHoney % 6e4) / 1000);
+    document.getElementById("countdown-honey").textContent =
+      `${pad(hHoney)}h ${pad(mHoney)}m ${pad(sHoney)}s`;
+
+    // 4) COSMETICS STOCK = next 7-hour interval
+    const next7 = new Date(now);
+    const hour = now.getHours();
+    const next7h = Math.ceil((hour + now.getMinutes() / 60 + now.getSeconds() / 3600) / 4) * 4;
+    next7.setHours(next7h, 0, 0, 0);
+
+    const distCos = next7 - now;
+    const hCos = Math.floor(distCos / 3.6e6);
+    const mCos = Math.floor((distCos % 3.6e6) / 6e4);
+    const sCos = Math.floor((distCos % 6e4) / 1000);
+    document.getElementById("countdown-cosmetics").textContent =
+      `${pad(hCos)}h ${pad(mCos)}m ${pad(sCos)}s`;
+  }
+
+  updateCountdowns();
+  setInterval(updateCountdowns, 1000);
+</script>
+
+
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9649d6e7fa27a261&quot;,&quot;version&quot;:&quot;2025.7.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;0b528b4909e843a18449f7fb5d36adc4&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+
+
+</div><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" id="15e4acf497982a" width="0" height="0" src="about:blank" name="__pb_locator__" style="display: none; height: 0px; width: 0px; border: 0px;"></iframe><iframe name="googlefcPresent" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><div id="adBanner" class="adLeaderboard adBanner leaderboard_ad" style="background-color: transparent; height: 10px; width: 10px; position: fixed; bottom: -100px; left: -100px;">&nbsp;</div><iframe id="pw_user_data" src="https://cdn.intergient.com/pageos/V.20250722.1/iframe/iframe.html" style="display: none; height: 0px; width: 0px; position: fixed; bottom: -99999px;"></iframe><img src="https://ad-delivery.net/px.gif?ch=2" style="display: none !important; width: 1px !important; height: 1px !important;"><img src="https://ad.doubleclick.net/favicon.ico?ad=300x250&amp;ad_box_=1&amp;adnet=1&amp;showad=1&amp;size=250x250" style="display: none !important; width: 1px !important; height: 1px !important;"><img src="https://ad-delivery.net/px.gif?ch=1&amp;e=0.9340004242784135" style="display: none !important; width: 1px !important; height: 1px !important;"><div class="pw-corner-ad-video" style="width: 400px; height: 225px; position: fixed; right: 0px; bottom: 0px; z-index: 999999; border-radius: 8px; background: none rgb(0, 0, 0); margin-right: 10px; margin-bottom: 105px;"><div id="corner_ad_video" class="pw-tag pw-corner-ad-video-container pw-ad-container-hidden" style="width: 400px; height: 225px; margin: auto; position: relative;"><div style="position: absolute; width: 400px; height: 225px;;border-radius: 8px;overflow: hidden; margin-left: auto; margin-right: auto; left: 0; right: 0;" class="pw-custom-ima-container"><div style="all: initial; display: flex; position: absolute; bottom: 0; left: 0; z-index: 1; margin: 0 0 7px 7px; background: rgba(0, 0, 0, 0.5); padding: 5px 5px; border-radius: 5px; user-select: none; justify-content: center; align-items: center;"><div class="pw-custom-ima-volume" style="all: initial; min-width: 20px; margin-right: 4px; display: inline-block;"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyMCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8xMjA5XzE5NykiPgo8cGF0aCBkPSJNMTAuNDA2MiAwLjA4MzYzODdDMTAuNzUgMC4yMzk3NjQgMTEgMC42MTQ0NjYgMTEgMC45ODkxNjdWMTIuOTc5NkMxMSAxMy4zODU1IDEwLjc1IDEzLjcyOSAxMC40MDYyIDEzLjkxNjRDMTAuMDMxMiAxNC4wNzI1IDkuNjI1IDE0LjAxIDkuMzEyNSAxMy43MjlMNS4wOTM3NSA5Ljk4MkgzQzEuODc1IDkuOTgyIDEgOS4xMDc2OSAxIDcuOTgzNTlWNS45ODUxOEMxIDQuODkyMzEgMS44NzUgMy45ODY3OCAzIDMuOTg2NzhINS4wOTM3NUw5LjMxMjUgMC4yNzA5ODlDOS42MjUgLTAuMDEwMDM2NiAxMC4wMzEyIC0wLjA3MjQ4NjkgMTAuNDA2MiAwLjA4MzYzODdaTTE2Ljc4MTIgMi4zMzE4NUMxOC4xMjUgMy40NTU5NSAxOSA1LjExMDg4IDE5IDYuOTg0MzlDMTkgOC44ODkxMiAxOC4xMjUgMTAuNTQ0IDE2Ljc4MTIgMTEuNjM2OUMxNi40Mzc1IDExLjkxOCAxNS45Njg4IDExLjg1NTUgMTUuNzE4OCAxMS41NDMzQzE1LjQzNzUgMTEuMjMxIDE1LjUgMTAuNzYyNiAxNS44MTI1IDEwLjQ4MTZDMTYuODQzOCA5LjY2OTc1IDE3LjUgOC40MjA3NCAxNy41IDYuOTg0MzlDMTcuNSA1LjU3OTI2IDE2Ljg0MzggNC4zMzAyNSAxNS44MTI1IDMuNTE4NEMxNS41IDMuMjM3MzcgMTUuNDY4OCAyLjc2OSAxNS43MTg4IDIuNDU2NzVDMTUuOTY4OCAyLjE0NDUgMTYuNDM3NSAyLjA4MjA1IDE2Ljc4MTIgMi4zMzE4NVpNMTMuODc1IDQuNjczNzNDMTQuNTYyNSA1LjIzNTc4IDE1IDYuMDQ3NjMgMTUgNi45ODQzOUMxNSA3Ljk1MjM3IDE0LjU2MjUgOC43NjQyMiAxMy44NzUgOS4zMjYyN0MxMy41NjI1IDkuNTc2MDcgMTMuMDkzOCA5LjU0NDg1IDEyLjgxMjUgOS4yMDEzN0MxMi41NjI1IDguODg5MTIgMTIuNjI1IDguNDIwNzQgMTIuOTM3NSA4LjE3MDk0QzEzLjI4MTIgNy44ODk5MiAxMy41IDcuNDUyNzYgMTMuNSA2Ljk4NDM5QzEzLjUgNi41MTYwMSAxMy4yODEyIDYuMTEwMDggMTIuOTM3NSA1LjgyOTA2QzEyLjYyNSA1LjU3OTI2IDEyLjU2MjUgNS4xMTA4OCAxMi44MTI1IDQuNzY3NDFDMTMuMDkzOCA0LjQ1NTE1IDEzLjU2MjUgNC40MjM5MyAxMy44NzUgNC42NzM3M1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZF8xMjA5XzE5NyIgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE2IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9IjEiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41Ii8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9Im91dCIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4yNSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTk3Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTk3IiByZXN1bHQ9InNoYXBlIi8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" style="all: initial; display: none"><img class="pw-custom-mute-image" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyMCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8xMjA5XzE4MSkiPgo8cGF0aCBkPSJNMTAuNDE0NCAwLjA5MzQwNDNDMTAuNzU4NSAwLjI0OTUzIDExLjAwODcgMC42MjQyMzEgMTEuMDA4NyAwLjk5ODkzMlYxMi45ODk0QzExLjAwODcgMTMuMzk1MyAxMC43NTg1IDEzLjczODggMTAuNDE0NCAxMy45MjYxQzEwLjAzOTEgMTQuMDgyMyA5LjYzMjQ5IDE0LjAxOTggOS4zMTk3MiAxMy43Mzg4TDUuMDk3MzEgOS45OTE3NkgzLjAwMTc0QzEuODc1NzYgOS45OTE3NiAxIDkuMTE3NDYgMSA3Ljk5MzM2VjUuOTk0OTVDMSA0LjkwMjA3IDEuODc1NzYgMy45OTY1NCAzLjAwMTc0IDMuOTk2NTRINS4wOTczMUw5LjMxOTcyIDAuMjgwNzU1QzkuNjMyNDkgLTAuMDAwMjcxMDIyIDEwLjAzOTEgLTAuMDYyNzIxMiAxMC40MTQ0IDAuMDkzNDA0M1pNMTQuMjkyOCA0LjIxNTEyTDE2LjAxMyA1LjkzMjVMMTcuNzMzMyA0LjIxNTEyQzE4LjAxNDggMy45MzQwOSAxOC40ODM5IDMuOTM0MDkgMTguNzY1NCA0LjIxNTEyQzE5LjA3ODIgNC41MjczNyAxOS4wNzgyIDQuOTk1NzUgMTguNzY1NCA1LjI3Njc3TDE3LjA0NTIgNi45OTQxNUwxOC43NjU0IDguNzExNTNDMTkuMDc4MiA5LjAyMzc4IDE5LjA3ODIgOS40OTIxNiAxOC43NjU0IDkuNzczMTlDMTguNDgzOSAxMC4wODU0IDE4LjAxNDggMTAuMDg1NCAxNy43MzMzIDkuNzczMTlMMTYuMDEzIDguMDU1ODFMMTQuMjkyOCA5Ljc3MzE5QzEzLjk4IDEwLjA4NTQgMTMuNTEwOSAxMC4wODU0IDEzLjIyOTQgOS43NzMxOUMxMi45MTY2IDkuNDkyMTYgMTIuOTE2NiA5LjAyMzc4IDEzLjIyOTQgOC43MTE1M0wxNC45NDk2IDYuOTk0MTVMMTMuMjI5NCA1LjI3Njc3QzEyLjkxNjYgNC45OTU3NSAxMi45MTY2IDQuNTI3MzcgMTMuMjI5NCA0LjIxNTEyQzEzLjUxMDkgMy45MzQwOSAxMy45OCAzLjkzNDA5IDE0LjI5MjggNC4yMTUxMloiIGZpbGw9IndoaXRlIi8+CjwvZz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZF8xMjA5XzE4MSIgeD0iMCIgeT0iMC4wMDk3NjU2MiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE2IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9IjEiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41Ii8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9Im91dCIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4yNSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTgxIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTgxIiByZXN1bHQ9InNoYXBlIi8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" style="all: initial; display: block"></div><img class="pw-custom-ima-ad-label" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyMiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8xMjA5XzE5OCkiPgo8cGF0aCBkPSJNNi4wNTcxNyAxMC4xNTM5SDQuNTc0MjJMNi44MzM4MSAzLjYwODRIOC42MTcxOUwxMC44NzM2IDEwLjE1MzlIOS4zOTA2Mkw3Ljc1MTA3IDUuMTA0MTRINy42OTk5M0w2LjA1NzE3IDEwLjE1MzlaTTUuOTY0NDkgNy41ODEwNUg5LjQ2NzMzVjguNjYxMzFINS45NjQ0OVY3LjU4MTA1WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEzLjk4MTcgMTAuMTUzOUgxMS42NjE0VjMuNjA4NEgxNC4wMDA5QzE0LjY1OTMgMy42MDg0IDE1LjIyNiAzLjczOTQ0IDE1LjcwMTIgNC4wMDE1MUMxNi4xNzYzIDQuMjYxNDUgMTYuNTQxNyA0LjYzNTM5IDE2Ljc5NzQgNS4xMjMzMUMxNy4wNTUyIDUuNjExMjQgMTcuMTg0MSA2LjE5NTA1IDE3LjE4NDEgNi44NzQ3M0MxNy4xODQxIDcuNTU2NTUgMTcuMDU1MiA4LjE0MjQ5IDE2Ljc5NzQgOC42MzI1NUMxNi41NDE3IDkuMTIyNiAxNi4xNzQyIDkuNDk4NjcgMTUuNjk0OCA5Ljc2MDc0QzE1LjIxNzUgMTAuMDIyOCAxNC42NDY1IDEwLjE1MzkgMTMuOTgxNyAxMC4xNTM5Wk0xMy4wNDUzIDguOTY4MTNIMTMuOTI0MkMxNC4zMzMzIDguOTY4MTMgMTQuNjc3NCA4Ljg5NTY5IDE0Ljk1NjUgOC43NTA4QzE1LjIzNzcgOC42MDM3OCAxNS40NDg3IDguMzc2ODYgMTUuNTg5MyA4LjA3MDA1QzE1LjczMjEgNy43NjExIDE1LjgwMzQgNy4zNjI2NiAxNS44MDM0IDYuODc0NzNDMTUuODAzNCA2LjM5MTA3IDE1LjczMjEgNS45OTU4MyAxNS41ODkzIDUuNjg5MDFDMTUuNDQ4NyA1LjM4MjE5IDE1LjIzODggNS4xNTYzNCAxNC45NTk3IDUuMDExNDVDMTQuNjgwNiA0Ljg2NjU3IDE0LjMzNjUgNC43OTQxMiAxMy45Mjc0IDQuNzk0MTJIMTMuMDQ1M1Y4Ljk2ODEzWiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZyBmaWx0ZXI9InVybCgjZmlsdGVyMV9kXzEyMDlfMTk4KSI+CjxwYXRoIGQ9Ik0xLjg0ODQ4IDAuNzVIMjAuMTUxNUMyMC4yMDU5IDAuNzUgMjAuMjUgMC43OTQwOTIgMjAuMjUgMC44NDg0ODVWMTMuMTUxNUMyMC4yNSAxMy4yMDU5IDIwLjIwNTkgMTMuMjUgMjAuMTUxNSAxMy4yNUgxLjg0ODQ4QzEuNzk0MDkgMTMuMjUgMS43NSAxMy4yMDU5IDEuNzUgMTMuMTUxNVYwLjg0ODQ4NUMxLjc1IDAuNzk0MDkzIDEuNzk0MDkgMC43NSAxLjg0ODQ4IDAuNzVaIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIi8+CjwvZz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZF8xMjA5XzE5OCIgeD0iMy41NzQyMiIgeT0iMy42MDg0IiB3aWR0aD0iMTQuNjA5NCIgaGVpZ2h0PSI4LjU0NTkiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIwLjUiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0ib3V0Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjI1IDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfMTIwOV8xOTgiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3dfMTIwOV8xOTgiIHJlc3VsdD0ic2hhcGUiLz4KPC9maWx0ZXI+CjxmaWx0ZXIgaWQ9ImZpbHRlcjFfZF8xMjA5XzE5OCIgeD0iMCIgeT0iMCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjE2IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9IjEiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41Ii8+CjxmZUNvbXBvc2l0ZSBpbjI9ImhhcmRBbHBoYSIgb3BlcmF0b3I9Im91dCIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4yNSAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTk4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93XzEyMDlfMTk4IiByZXN1bHQ9InNoYXBlIi8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=" style="all: initial; pointer-events: none;"><div style="all: initial; display: inline-block; margin-left: 6px; font-family: sans-serif; font-size: small; vertical-align: text-top;"><span id="pw-remaining-timer" style="color: white; text-shadow: 0 1px 1px rgb(0 0 0 / 25%);">0:02</span></div></div><div style="display: block;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" muted="" src="https://gcdn.2mdn.net/videoplayback/id/bd04f6d5891db427/itag/342/source/web_video_ads/xpc/EgVovf3BOg%3D%3D/ctier/L/acao/yes/ip/0.0.0.0/ipbits/0/expire/3897229166/sparams/id,itag,source,xpc,ctier,acao,ip,ipbits,expire/signature/6A8D4673210642FFF79ACCD34F86AF8AD88449C6.467E9A5AC9F97CCB6C0F94CBF5B97A12B9DAEEE7/key/ck2/file/file.mp4" style="background-color: rgb(0, 0, 0); height: 100%; width: 100%; position: absolute; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><div style="display: none;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" muted="" style="background-color: rgb(0, 0, 0); height: 100%; width: 100%; position: absolute; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><iframe src="https://imasdk.googleapis.com/js/core/bridge3.708.0_en.html#fid=goog_2033089336" allowfullscreen="" allow="autoplay;attribution-reporting" id="goog_2033089336" title="Advertisement" width="400" height="225" style="border: 0px; opacity: 1; margin: 0px; padding: 0px; position: relative; color-scheme: light;"></iframe><iframe title="Advertisement" style="visibility: hidden; width: 0px; height: 0px; position: absolute; left: 0px; top: 0px;"></iframe></div><iframe id="pw_ads_iframe_prebid_corner_ad_video_/154013155,22954561860/1025075/75556/1025075-w:75556-corner_ad_video/1025075-w:75556-corner_ad_video-ROS" frameborder="0" width="100%" height="100%" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0"></iframe><div id="pw-close-video-container" style="all: initial; position: absolute; z-index: 999; padding: 0; user-select: none; opacity: 0;top: -18px; right: 0;opacity: 1;"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiByeD0iNyIgZmlsbD0iIzczNzM3MyIvPgo8cGF0aCBkPSJNOS45Mjk2OSA1LjE5OTIyTDcuODc4OTEgNy4yNUw5LjkyOTY5IDkuMzIwMzFDMTAuMTgzNiA5LjU1NDY5IDEwLjE4MzYgOS45NjQ4NCA5LjkyOTY5IDEwLjE5OTJDOS42OTUzMSAxMC40NTMxIDkuMjg1MTYgMTAuNDUzMSA5LjA1MDc4IDEwLjE5OTJMNyA4LjE0ODQ0TDQuOTI5NjkgMTAuMTk5MkM0LjY5NTMxIDEwLjQ1MzEgNC4yODUxNiAxMC40NTMxIDQuMDUwNzggMTAuMTk5MkMzLjc5Njg4IDkuOTY0ODQgMy43OTY4OCA5LjU1NDY5IDQuMDUwNzggOS4zMjAzMUw2LjEwMTU2IDcuMjVMNC4wNTA3OCA1LjE5OTIyQzMuNzk2ODggNC45NjQ4NCAzLjc5Njg4IDQuNTU0NjkgNC4wNTA3OCA0LjMyMDMxQzQuMjg1MTYgNC4wNjY0MSA0LjY5NTMxIDQuMDY2NDEgNC45Mjk2OSA0LjMyMDMxTDcgNi4zNzEwOUw5LjA1MDc4IDQuMzIwMzFDOS4yODUxNiA0LjA2NjQxIDkuNjk1MzEgNC4wNjY0MSA5LjkyOTY5IDQuMzIwMzFDMTAuMTgzNiA0LjU1NDY5IDEwLjE4MzYgNC45NjQ4NCA5LjkyOTY5IDUuMTk5MjJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" style="all: initial; display: block"></div></div></div><iframe name="__tcfapiLocator" src="about:blank" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcInactive" src="about:blank" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcLoaded" src="about:blank" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><script src="https://script-api.ccgateway.net/1/userId" type="text/javascript" async=""></script><script src="https://script-api.ccgateway.net/script/launcher/2/user.js" type="text/javascript" async=""></script><script src="https://script-api.ccgateway.net/script/launcher/1/customevents.js" type="text/javascript" async=""></script><script src="https://script-api.ccgateway.net/script/launcher/5/api.js" type="text/javascript" async=""></script><script src="https://script-api.ccgateway.net/script/bundle?id=vulcanvalues.com&amp;parentId=5bb3e20859" type="text/javascript" async=""></script><div id="pw-oop-bottom_rail" class="pw-tag pw-size-728x90" data-pw-status="loaded" style="width:100%;position:fixed;left:0;bottom:0;
+            z-index: 2147483643;background-color: #f5f5f526;
+            border-top:1px solid rgba(0,0,0,0.1);padding-top:5px;
+            text-align:center;;" data-google-query-id="CNOiweq6144DFVq9gwgdRrI43g"><div id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-bottom_rail/1025075-w:75556-bottom_rail-ROS_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-bottom_rail/1025075-w:75556-bottom_rail-ROS_0" name="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-bottom_rail/1025075-w:75556-bottom_rail-ROS_0" title="3rd party ad content" width="320" height="50" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" aria-label="ad" tabindex="0" allow="private-state-token-redemption;attribution-reporting" data-load-complete="true" style="border: 0px; vertical-align: bottom; width: 728px; height: 90px;" data-google-container-id="1"></iframe></div></div><div id="pw-oop-left_rail" class="pw-tag pw-size-160x600" data-pw-status="rendered" style="position:fixed;width:auto;height:600px;
+            left:25px;top:50%;margin-top: -300px;z-index: 2147483644;
+            border-bottom: 1px solid rgba(55,55,55,0.9);border-top: 1px solid rgba(55,55,55,0.9);
+            border-right:1px solid rgba(55,55,55,0.9);border-left:1px solid rgba(55,55,55,0.9);max-height: 600px;max-width: 160px" data-google-query-id="CNHJpOm6144DFWiFgwgdJ74nSg"><div id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-left_rail/1025075-w:75556-left_rail-ROS_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-left_rail/1025075-w:75556-left_rail-ROS_0" name="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-left_rail/1025075-w:75556-left_rail-ROS_0" title="3rd party ad content" width="160" height="600" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" aria-label="ad" tabindex="0" allow="private-state-token-redemption;attribution-reporting" data-load-complete="true" style="border: 0px; vertical-align: bottom; width: 160px; height: 600px;" data-google-container-id="2"></iframe></div></div><iframe name="google_ads_top_frame" id="google_ads_top_frame" style="display: none; position: fixed; left: -999px; top: -999px; width: 0px; height: 0px;"></iframe><script src="//assets.bounceexchange.com/assets/smart-tag/versioned/runtime_c81e76ee00d795b1eebf8d27949f8dc5.br.js" async="async"></script><iframe src="https://s.amazon-adsystem.com/iu3?cm3ppd=1&amp;d=dtb-pub&amp;csif=t&amp;dl=n-mediagrid_ym_n-colossusMedia_n-nativo_n-blis_3lift" style="display: none;"></iframe><script src="//assets.bounceexchange.com/assets/smart-tag/versioned/main-v2_7979620d309f40834607731d2e0afb48.br.js" async="async"></script><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe><iframe id="bcx_local_storage_frame" src="https://assets.bounceexchange.com/assets/bounce/local_storage_frame17.min.html#8304" title="empty" style="display: none;"></iframe><iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;script type=&quot;text/javascript&quot; async src=&quot;//ads.pubmatic.com/AdServer/js/pwt/156512/6397/pwt.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;" id="bcx_identityhub_frame" title="empty" style="display: none;"></iframe><iframe src="https://gum.criteo.com/syncframe?origin=publishertag&amp;topUrl=vulcanvalues.com&amp;gdpr=0&amp;gdpr_consent=#{&quot;bundle&quot;:{&quot;value&quot;:&quot;NciTml9QYVFyc2t5VkZjamtmUSUyRjg0TDhRY1d0V2Rud2psYmxCMWx4aldtdjYwTko5TmdjajlEUDhJeW8lMkZxb2d2RiUyQk0zaDk0ZnZWWGRSS0gzOXQ1MEIlMkJkVnZybUg2Mmt5OEZsNmtxaXFyQzg3NzhwTWNnQkcxTjVnZVNkeGgwOWswaGlNZDFVak1xblB4cU5FTXZJT1pvV1hHVVRUdWZobjR6Qk54MnhKRCUyRnVqcTdRJTNE&quot;,&quot;origin&quot;:3},&quot;optout&quot;:{&quot;value&quot;:false,&quot;origin&quot;:0},&quot;tld&quot;:&quot;vulcanvalues.com&quot;,&quot;topUrl&quot;:&quot;vulcanvalues.com&quot;,&quot;version&quot;:161,&quot;origin&quot;:&quot;publishertag&quot;,&quot;requestId&quot;:&quot;0.5955703701358674&quot;}" width="0" height="0" frameborder="0" sandbox="allow-scripts allow-same-origin" aria-hidden="true" title="Criteo GUM iframe" style="border-width: 0px; margin: 0px; display: none;"></iframe><div id="e1753427493557" style="color-scheme: initial; forced-color-adjust: initial; mask: initial; math-depth: initial; position: initial; position-anchor: initial; text-size-adjust: initial; appearance: initial; color: initial; font: initial; font-palette: initial; font-synthesis: initial; position-area: initial; text-orientation: initial; text-rendering: initial; text-spacing-trim: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; anchor-name: initial; anchor-scope: initial; animation-composition: initial; animation: initial; app-region: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-decoration-break: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: block; dominant-baseline: initial; dynamic-range-limit: initial; empty-cells: initial; field-sizing: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: 0px; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; interpolate-size: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask-type: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-block: initial; overflow-clip-margin: initial; overflow-inline: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position-try: initial; position-visibility: initial; print-color-adjust: initial; quotes: initial; r: initial; reading-flow: initial; reading-order: initial; resize: initial; rotate: initial; ruby-align: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-initial-target: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-marker-group: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-timeline: initial; scrollbar-color: initial; scrollbar-gutter: initial; scrollbar-width: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-box: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; text-wrap: initial; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-class: initial; view-transition-name: initial; visibility: hidden; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; white-space-collapse: initial; widows: initial; width: 0px; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: initial;"><style>#e1753427493557 *{margin:0;padding:0;position:static;outline:0;background:transparent none;border:none;overflow:visible;visibility:visible;filter:alpha(opacity=100);opacity:1;box-sizing:content-box;-moz-box-sizing:content-box;text-decoration:none;font:normal 12px/1 arial;text-shadow:none;box-shadow:none;color:#000;text-align:left;vertical-align:top;float:none;max-width:none;max-height:none}#e1753427493557 [id$="_ATTRIBUTION"] [tabindex]:active,#e1753427493557 [id$="_ATTRIBUTION"] [tabindex]:focus,#e1753427493557 [id$="_CLOSE"] [tabindex]:active,#e1753427493557 [id$="_CLOSE"] [tabindex]:focus,#e1753427493557 [id$="_ADCHOICES"] [tabindex]:active,#e1753427493557 [id$="_ADCHOICES"] [tabindex]:focus,#e1753427493557 .GGModal_StandAlone [tabindex]:active,#e1753427493557 .GGModal_StandAlone [tabindex]:focus{box-shadow:0px 0px 10px 0px #666 !important;}#e1753427493557 > iframe{display:none!important}#e1753427493557 > ._ar_sc{transition:opacity 0.2s ease}#e1753427493557._hii > ._ar_sc{opacity:0 !important}</style><div id="GG_PXS" aria-hidden="true" style="display:none"><iframe frameborder="0" scrolling="no" name="ggifrq1753427493562" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts" src="about:blank" height="100%" width="100%"></iframe></div><script async="" type="text/javascript">(function(win,doc,G,env,undef){try{/*
+//SUP-4477 
+
+var video_player = document.querySelector('.pw-corner-ad-video');
+//var video_player_2 = document.querySelector('div#corner_ad_video');
+//var video_player = video_player_1 ? video_player_1 : video_player_2;
+var sticky_part  = document.querySelector('div#pw-oop-bottom_rail');
+
+
+
+//Define GumGum Events
+win.ggevents = win.ggevents || [];
+
+//Event Handler for GumGum
+win.ggevents.push({
+
+//Event Handler for In-Screen Load
+'inscreen.load': function (data) {
+
+    if (video_player) video_player.setAttribute('style', 'margin-bottom: 255px !important');
+    if(sticky_part) sticky_part.setAttribute('style', 'visibility: hidden !important;');
+},
+    'inscreen.close': function (data) {
+        
+        if(sticky_part) sticky_part.setAttribute('style', 'visibility: visible;');
+
+}
+
+}); 
+*/
+
+
+//SUP-4324 //TAS-4829 
+
+var stickyFooter = document.querySelector('div#pw-oop-bottom_rail');
+
+const config = {attributes: true};
+const callback = (mutationList, observer) => {
+  for (const mutation of mutationList) {
+    if (mutation.type === 'attributes') {
+        let iframe = GUMGUM.isad.iframe;
+        let offset = iframe.style.transform == 'scale(1, 2)' ? 220 : 120;
+		var video_player = document.querySelector('.pw-corner-ad-video');
+        if(video_player) video_player.style.marginBottom = offset + '100px';
+    }
+  }
+}; 
+
+const observer = new MutationObserver(callback);
+
+win.ggevents = win.ggevents || [];
+
+
+win.ggevents.push({
+
+    'inscreen.load': function (data) {
+        //SUP-4324
+        if(stickyFooter) {
+          stickyFooter.setAttribute('style', 'visibility: hidden !important;');
+        }
+        
+        var ad = document.querySelector('div[aria-label^="cookieconsent"]');
+        if(ad){
+            ad.setAttribute('style', 'z-index: 2147483647 !important;');
+        }
+        
+        //SUP-4105 
+        document.body.dispatchEvent(new Event('gumgum-inscreen-load'));
+        
+		//TAS-4829
+		if(GUMGUM && GUMGUM.isad){
+            
+            // Start observing the target node for configured mutations
+            let el = GUMGUM.isad.iframe;
+            if(el) observer.observe(el, config);
+            
+        }
+    },
+    'inscreen.close': function (data) {
+        //SUP-4324
+		if(stickyFooter) {
+          stickyFooter.setAttribute('style', 'visibility: visible !important;');
+        }
+        //SUP-4105
+        if(data.userRequested) {
+            document.body.dispatchEvent(new Event('gumgum-inscreen-close'));
+        }
+        //SUP 4053
+		var video_player = document.querySelector('.pw-corner-ad-video');
+		video_player.style.marginBottom = "65px";
+		//TAS-4829
+        observer.disconnect();
+    
+       
+    }
+});
+
+//SUP-3401, SUP 4053
+
+googletag.pubads().addEventListener('slotRequested', function(event) {
+    var identifer = "rail" || "bottom" || "mmt-sticky";
+	if(event.slot.getSlotElementId() == '#pw-oop-bottom_rail') {
+        if(GUMGUM && GUMGUM.isad) {
+			GUMGUM.removeISAd();
+        }
+	}
+	if(event.slot.getAdUnitPath().includes(identifer)) {
+		if(GUMGUM && GUMGUM.isad) {
+			GUMGUM.removeISAd();
+		}
+	}
+});}catch(err){GUMGUM.log("Custom JS", err)}}(window,window.document,window.GUMGUM,"desktop"))</script><iframe style="color-scheme: initial; forced-color-adjust: initial; mask: initial; math-depth: initial; position: initial; position-anchor: initial; text-size-adjust: initial; appearance: initial; color: initial; font: initial; font-palette: initial; font-synthesis: initial; position-area: initial; text-orientation: initial; text-rendering: initial; text-spacing-trim: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; anchor-name: initial; anchor-scope: initial; animation-composition: initial; animation: initial; app-region: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-decoration-break: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: block; dominant-baseline: initial; dynamic-range-limit: initial; empty-cells: initial; field-sizing: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: 0px; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; interpolate-size: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask-type: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-block: initial; overflow-clip-margin: initial; overflow-inline: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position-try: initial; position-visibility: initial; print-color-adjust: initial; quotes: initial; r: initial; reading-flow: initial; reading-order: initial; resize: initial; rotate: initial; ruby-align: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-initial-target: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-marker-group: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-timeline: initial; scrollbar-color: initial; scrollbar-gutter: initial; scrollbar-width: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-box: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; text-wrap: initial; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-class: initial; view-transition-name: initial; visibility: hidden; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; white-space-collapse: initial; widows: initial; width: 0px; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: initial;"></iframe></div></body><iframe name="goog_topics_frame" src="https://securepubads.g.doubleclick.net/static/topics/topics_frame.html" style="display: none;"></iframe><iframe name="ifrm_openx" src="https://pa.openx.net/topics_frame.html?bidder=openx" style="display: none;"></iframe><iframe name="ifrm_pubmatic" src="https://ads.pubmatic.com/AdServer/js/topics/topics_frame.html?bidder=pubmatic" style="display: none;"></iframe><iframe sandbox="allow-scripts allow-same-origin" id="176d7f56ea55ca1c8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://rtb.gumgum.com/usync/prbds2s?gdpr=&amp;gdpr_consent=&amp;us_privacy=&amp;r=https%3A%2F%2Fprebid.intergient.com%2Fsetuid%3Fbidder%3Dgumgum%26gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="179ee54551f8f83e8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://ssum-sec.casalemedia.com/usermatch?s=184674&amp;gdpr=&amp;gdpr_consent=&amp;us_privacy=&amp;gpp=&amp;gppsid=&amp;cb=https%3A%2F%2Fprebid.intergient.com%2Fsetuid%3Fbidder%3Dix%26gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="20842f0edd22b7898" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://secure-assets.rubiconproject.com/utils/xapi/multi-sync.html?p=pbs-Playwire&amp;gdpr=&amp;gdpr_consent=&amp;us_privacy=">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="209c2e09884385c28" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://eb2.3lift.com/sync?gdpr=&amp;cmp_cs=&amp;us_privacy=&amp;gpp=&amp;gpp_sid=&amp;redir=https%3A%2F%2Fprebid.intergient.com%2Fsetuid%3Fbidder%3Dtriplelift%26gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D%24UID">
+    </iframe><ins id="gpt_unit_/154013155,22954561860/1025075/75556/1025075-w:75556-web_interstitial/1025075-w:75556-web_interstitial-ROS_0" data-google-query-id="CLDh0qG6144DFYmGgwgdf3g8wQ" aria-hidden="true" data-vignette-loaded="true" tabindex="0" style="display: none !important; width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; clear: none !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; position: fixed !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647 !important; background: transparent !important;"><div id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-web_interstitial/1025075-w:75556-web_interstitial-ROS_0__container__" style="border: 0pt none !important; display: inline-block !important; width: 100vw !important; height: 100vh !important; inset: auto !important; clear: none !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; position: static !important; vertical-align: baseline !important; visibility: visible !important; z-index: auto !important;"><iframe frameborder="0" src="https://fee71fbff208183026f9ceba9ac891e7.safeframe.googlesyndication.com/safeframe/1-0-45/html/container.html" id="google_ads_iframe_/154013155,22954561860/1025075/75556/1025075-w:75556-web_interstitial/1025075-w:75556-web_interstitial-ROS_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="" height="" data-is-safeframe="true" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="private-state-token-redemption;attribution-reporting;autoplay" aria-label="Advertisement" tabindex="0" data-google-container-id="4" data-load-complete="true" style="border: 0px !important; vertical-align: bottom !important; width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; position: absolute !important; clear: none !important; display: inline !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; visibility: visible !important; z-index: auto !important;"></iframe></div></ins><iframe sandbox="allow-scripts allow-same-origin" id="229d873c46052cb4" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://ssp-sync.criteo.com/user-sync/iframe?gdprapplies=&amp;gdpr=&amp;ccpa=&amp;gpp=&amp;gpp_sid=&amp;redir=https%3A%2F%2Fprebid.intergient.com%2Fsetuid%3Fbidder%3Dcriteo%26gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D%24%7BCRITEO_USER_ID%7D&amp;profile=230">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="230de189711790f68" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://ads.pubmatic.com/AdServer/js/user_sync.html?kdntuid=1&amp;p=158326">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="23144bcd130e6cac" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://acdn.adnxs.com/dmp/async_usersync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="23205c16b3ecac0b8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://cs.admanmedia.com/sync/gumgum?puid=u_9114efdc-ff0b-456f-91f5-13e1f0326836&amp;gdpr_consent=&amp;ccpa=&amp;coppa=&amp;redir=https%3A%2F%2Fusersync.gumgum.com%2Fusersync%3Fb%3Daad%26i%3D%5BUID%5D%26gdpr_consent%3D%5BGDPR_CONSENT%5D%26ccpa%3D%5BCCPA%5D%26coppa%3D%5BCOPPA%5D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="23306a61e8fb70878" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://cs.admanmedia.com/sync/gumgum?puid=u_9114efdc-ff0b-456f-91f5-13e1f0326836&amp;gdpr_consent=&amp;ccpa=&amp;coppa=&amp;redir=https%3A%2F%2Fusersync.gumgum.com%2Fusersync%3Fb%3Daad%26i%3D%5BUID%5D%26gdpr_consent%3D%5BGDPR_CONSENT%5D%26ccpa%3D%5BCCPA%5D%26coppa%3D%5BCOPPA%5D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="234b6ce136b52ced" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://eb2.3lift.com/sync?">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="2357cf9cb99233cc8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://sync.cootlogix.com/api/sync/iframe/?cid=665db4754b2ec067196b8f78&amp;gdpr=0&amp;gdpr_consent=&amp;us_privacy=&amp;coppa=0">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="236dcf3c02d88fbb" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://gum.criteo.com/syncframe?origin=criteoPrebidAdapter&amp;topUrl=vulcanvalues.com&amp;gpp=#{%22cw%22:false,%22lsw%22:false,%22origin%22:%22criteoPrebidAdapter%22,%22requestId%22:%220.3884221809681918%22,%22tld%22:%22vulcanvalues.com%22,%22topUrl%22:%22vulcanvalues.com%22,%22version%22:%229_51_0%22}">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="23769722192f0f428" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://js-sec.indexww.com/um/ixmatch.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="23846dd61e6b9b5" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://sdk.streamrail.com/cs-config/cs.html?org=6280c6f1899612000123320b&amp;tc=62fa3ffe716915000133a9c7&amp;as=62fa3ffe716915000133a9c9&amp;type=hb&amp;wd=cs.yellowblue.io&amp;domain=vulcanvalues.com">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="239e9d3778cf84078" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://playwire-d.openx.net/w/1.0/pd">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="2408005e05e17431" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="https://eus.rubiconproject.com/usync.html">
+    </iframe></html>
